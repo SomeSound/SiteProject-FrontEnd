@@ -1,0 +1,20 @@
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2em 4em;
+    background-color: blueviolet;
+}
+
+.navigationDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-grow: .1;
+}
+
+.searchDiv{
+    display: flex;
+    align-items: center;
+    flex-grow: .1;
+}

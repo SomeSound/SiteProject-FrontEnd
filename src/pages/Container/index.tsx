@@ -1,8 +1,10 @@
+import './Home.css';
+
 function Home() {
   return (
-    <div>
+    <body className="homeBody">
       <div>Home aqui</div>
-    </div>
+    </body>
   );
 }
 
