@@ -1,6 +1,6 @@
-import './Home.css';
+import './Container.css';
 
-function Home() {
+function Container() {
   return (
     <body className="homeBody">
       <div>Home aqui</div>
@@ -8,4 +8,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Container;

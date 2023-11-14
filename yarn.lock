@@ -49,6 +49,11 @@
   resolved "https://registry.npmjs.org/@emotion/unitless/-/unitless-0.8.1.tgz"
   integrity sha512-KOEGMu6dmJZtpadb476IsZBclKvILjopjUii3V+7MnXIQCYh8W3NgNcgwo21n9LXZX6EDIKvqfjYxXebDwxKmQ==
 
+"@esbuild/linux-x64@0.18.20":
+  version "0.18.20"
+  resolved "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.18.20.tgz"
+  integrity sha512-UYqiqemphJcNsFEskc73jQ7B9jgwjWrSayxawS6UVFZGWrAAtkzjxSqnoclCXxWtfwLdzU+vTpcNYhpn43uP1w==
+
 "@esbuild/win32-x64@0.18.20":
   version "0.18.20"
   resolved "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.18.20.tgz"
@@ -158,10 +163,30 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@oven/bun-linux-x64-baseline@1.0.11":
+  version "1.0.11"
+  resolved "https://registry.npmjs.org/@oven/bun-linux-x64-baseline/-/bun-linux-x64-baseline-1.0.11.tgz"
+  integrity sha512-Asx4pEMDXfmu9Sa0jX4PE1Wijtg1oCfUx8o4FeQEvnVz2+cGG+VoqZXuITmoQC6A4IzAZuJ1tcWOZ8jQCDtvJA==
+
+"@oven/bun-linux-x64@1.0.11":
+  version "1.0.11"
+  resolved "https://registry.npmjs.org/@oven/bun-linux-x64/-/bun-linux-x64-1.0.11.tgz"
+  integrity sha512-F9ZcgVHsPQk6ooHXIeydiLcVcMwhGRjSlOVeHBuHEJ+bI24e/dCY73UKEEz8/hLNA32ocDMmkAGE79qv0ccEIA==
+
 "@remix-run/router@1.11.0":
   version "1.11.0"
   resolved "https://registry.npmjs.org/@remix-run/router/-/router-1.11.0.tgz"
   integrity sha512-BHdhcWgeiudl91HvVa2wxqZjSHbheSgIiDvxrF1VjFzBzpTtuDPkOdOi3Iqvc08kXtFkLjhbS+ML9aM8mJS+wQ==
+
+"@swc/core-linux-x64-gnu@1.3.96":
+  version "1.3.96"
+  resolved "https://registry.npmjs.org/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.3.96.tgz"
+  integrity sha512-USdaZu8lTIkm4Yf9cogct/j5eqtdZqTgcTib4I+NloUW0E/hySou3eSyp3V2UAA1qyuC72ld1otXuyKBna0YKQ==
+
+"@swc/core-linux-x64-musl@1.3.96":
+  version "1.3.96"
+  resolved "https://registry.npmjs.org/@swc/core-linux-x64-musl/-/core-linux-x64-musl-1.3.96.tgz"
+  integrity sha512-QYErutd+G2SNaCinUVobfL7jWWjGTI0QEoQ6hqTp7PxCJS/dmKmj3C5ZkvxRYcq7XcZt7ovrYCTwPTHzt6lZBg==
 
 "@swc/core-win32-x64-msvc@1.3.96":
   version "1.3.96"
@@ -554,6 +579,18 @@ builtins@^5.0.1:
   integrity sha512-qwVpFEHNfhYJIzNRBvd2C1kyo6jz3ZSMPyyuR47OPdiKWlbYnZNyDWuyR175qDnAJLiCo5fBBqPb3RiXgWlkOQ==
   dependencies:
     semver "^7.0.0"
+
+bun@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.npmjs.org/bun/-/bun-1.0.11.tgz"
+  integrity sha512-cKyQAQOfWNIP511UpQjkABUp7z/5+1ci2kXfhjL9PozHoCaCtnYFtVjeqU1LovpqEP1agAsMiDpGNKbJP89RIw==
+  optionalDependencies:
+    "@oven/bun-darwin-aarch64" "1.0.11"
+    "@oven/bun-darwin-x64" "1.0.11"
+    "@oven/bun-darwin-x64-baseline" "1.0.11"
+    "@oven/bun-linux-aarch64" "1.0.11"
+    "@oven/bun-linux-x64" "1.0.11"
+    "@oven/bun-linux-x64-baseline" "1.0.11"
 
 call-bind@^1.0.0, call-bind@^1.0.2, call-bind@^1.0.4, call-bind@^1.0.5:
   version "1.0.5"

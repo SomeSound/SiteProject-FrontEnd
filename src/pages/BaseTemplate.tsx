@@ -4,11 +4,11 @@ import Footer from '../components/Footer';
 
 function BaseTemplate() {
   return (
-    <div>
+    <>
       <Header />
       <Outlet />
       <Footer />
-    </div>
+    </>
   );
 }
 
