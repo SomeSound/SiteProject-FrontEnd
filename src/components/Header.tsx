@@ -7,11 +7,18 @@ import { Profile } from './Profile';
 function Header() {
   return (
     <div className="flex bg-red-600 h-20 justify-between items-center px-5 rounded-xl m-0.5">
-      <Logo />
-      <NavBar />
+      <div>
+        <Logo />
+      </div>
+
+      <div>
+        <NavBar />
+      </div>
+
       <div>
         <InputLabel />
       </div>
+
       <div>
         <Profile />
       </div>

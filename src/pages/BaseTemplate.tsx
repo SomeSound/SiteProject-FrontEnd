@@ -6,9 +6,7 @@ function BaseTemplate() {
   return (
     <>
       <Header />
-      <body className="homeBody">
-        <Outlet />
-      </body>
+      <Outlet />
       <Footer />
     </>
   );
