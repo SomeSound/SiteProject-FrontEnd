@@ -1,9 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 // Pages
-import Home from '../pages/Container';
-import Music from '../pages/Music/Music';
-import LayoutMusic from '../pages/Music/LayoutMusic';
+import Home from '../components/Home';
 import BaseTemplate from '../pages/BaseTemplate';
 
 const router = createBrowserRouter([
@@ -14,16 +12,6 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
-      },
-      {
-        path: 'music',
-        element: <LayoutMusic />,
-        children: [
-          {
-            path: '',
-            element: <Music />,
-          },
-        ],
       },
     ],
   },
