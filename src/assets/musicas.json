@@ -8,36 +8,36 @@
     "page": 0,
     "musicDataList": [
         {
-            "createdDate": "2023-11-18T03:49:31.980174Z",
-            "lastModifiedDate": "2023-11-18T03:49:31.980174Z",
             "id": 1,
-            "name": "lala",
+            "name": "LALALAA",
+            "genre": "Techno",
             "duration": 1.0,
-            "genre": "nãosei"
+            "createdDate": "2023-11-18T03:49:31.980174Z",
+            "lastModifiedDate": "2023-11-18T03:49:31.980174Z"
         },
         {
-            "createdDate": "2023-11-18T03:49:31.980174Z",
-            "lastModifiedDate": "2023-11-18T03:49:31.980174Z",
             "id": 2,
-            "name": "a",
+            "name": "FOMFOM",
+            "genre": "TechHouse",
             "duration": 1.0,
-            "genre": "nãosei"
+            "createdDate": "2023-11-18T03:49:31.980174Z",
+            "lastModifiedDate": "2023-11-18T03:49:31.980174Z"
         },
         {
-            "createdDate": "2023-11-18T03:49:31.980174Z",
-            "lastModifiedDate": "2023-11-18T03:49:31.980174Z",
             "id": 3,
-            "name": "asdada",
+            "name": "Pessai",
+            "genre": "PsyTrance",
             "duration": 1.0,
-            "genre": "nãosei"
+            "createdDate": "2023-11-18T03:49:31.980174Z",
+            "lastModifiedDate": "2023-11-18T03:49:31.980174Z"
         },
         {
-            "createdDate": "2023-11-18T03:49:31.980174Z",
-            "lastModifiedDate": "2023-11-18T03:49:31.980174Z",
             "id": 4,
-            "name": "joao",
+            "name": "Fuck",
+            "genre": "Fuckxon",
             "duration": 1.0,
-            "genre": "nãosei"
+            "createdDate": "2023-11-18T03:49:31.980174Z",
+            "lastModifiedDate": "2023-11-18T03:49:31.980174Z"
         }
     ]
 }

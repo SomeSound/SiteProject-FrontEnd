@@ -4,7 +4,7 @@ export function InputLabel() {
   return (
     <div className="h-10 flex gap-6 items-center">
       <div className="w-96">
-        <Input label="Username" crossOrigin={undefined} />
+        <Input crossOrigin={undefined} />
       </div>
     </div>
   );
