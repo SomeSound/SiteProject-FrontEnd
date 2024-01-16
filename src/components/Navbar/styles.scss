@@ -1,0 +1,40 @@
+.div-navbar-root {
+    top: 0;
+    position: static;
+    background-color: rgb(236, 17, 17);
+    border-radius: 0rem 0rem 0.5rem 0rem;
+    padding: 1rem 1rem;
+    margin: auto;
+    align-items: center;
+    display: flex;
+}
+
+.div-nav-logo {
+  position: static;
+  left: auto;
+  margin: 10px;
+  align-items: center;
+  width: 10%;
+}
+
+.div-nav-items {
+  align-items: center;
+  margin: auto;
+}
+
+.div-nav-item {
+  margin: 0px 30px 0px 30px;
+  align-items: center;
+  width: 10%;
+}
+
+.div-nav-search {
+  align-items: center;
+  width: 10%;
+  margin: auto;
+}
+
+.div-nav-avatar {
+  align-items: center;
+  margin-left: auto;
+}
