@@ -1,4 +1,4 @@
-import { PlaylistItem } from './NavbarItem';
+import { PlaylistItem } from './PlaylistItem';
 import { PlaylistItems } from './PlaylistItems';
 import { PlaylistRoot } from './PlaylistRoot';
 
