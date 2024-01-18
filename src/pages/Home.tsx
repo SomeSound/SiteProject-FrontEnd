@@ -7,18 +7,6 @@ import './styles.scss';
 export function Home() {
   return (
     <div className="flex">
-      <Navbar.Root>
-        <Navbar.Logo path="/" />
-
-        <Navbar.Search path="#" text="Search Here" />
-
-        <Navbar.Items>
-          <Navbar.Item path="/musics" text="Músicas" />
-          <Navbar.Item path="/artists" text="Artistas" />
-        </Navbar.Items>
-
-        <Navbar.Avatar path="/profile" image="Image Here"></Navbar.Avatar>
-      </Navbar.Root>
       <Playlist.Root>
         <Playlist.Items>
           <Playlist.Item name="Playlist 1" path="#" />
