@@ -1,6 +1,6 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
-interface ContainerBodyProps extends HTMLAttributes<HTMLDivElement> {
+interface ContainerBodyProps {
   children: ReactNode;
   isOpen?: boolean;
 }
