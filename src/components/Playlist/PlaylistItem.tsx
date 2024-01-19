@@ -1,17 +1,18 @@
-import './styles.scss';
-import { Link } from 'react-router-dom';
+import { Listbox, ListboxItem } from '@nextui-org/react';
 
 import './styles.scss';
 
-interface PlaylistItemProps {
-  name: string;
-  path: string;
+interface PlaylistItemsProps {
+  id: string;
+  text: string;
 }
 
-export function PlaylistItem({ name, path }: PlaylistItemProps) {
+export function PlaylistItem({ id, text }: PlaylistItemsProps) {
   return (
-    <div className="div-playlist-item">
-      <Link to={path}>{name}</Link>
+    <div className="div-playlist-items">
+      <Listbox>
+        <ListboxItem key={id}>{text}</ListboxItem>
+      </Listbox>
     </div>
   );
 }

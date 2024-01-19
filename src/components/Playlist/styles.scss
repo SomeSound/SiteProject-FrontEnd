@@ -1,12 +1,11 @@
 .div-playlist-root {
-    top: 0;
     position: static;
-    background-color: rgb(236, 17, 17);
-    border-radius: 0rem 0rem 0.5rem 0rem;
-    padding: 1rem 1rem;
+    background-color: aqua;
+    padding: 1rem;
     align-items: center;
     display: block;
     width: fit-content;
+    margin: 0.5px;
 }
 
 .div-playlist-item {

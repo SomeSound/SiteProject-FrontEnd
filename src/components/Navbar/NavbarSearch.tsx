@@ -1,5 +1,5 @@
 import './styles.scss';
-import { Link } from 'react-router-dom';
+import { Input, Link } from '@nextui-org/react';
 
 import './styles.scss';
 
@@ -11,7 +11,20 @@ interface NavbarSearchProps {
 export function NavbarSearch({ text, path }: NavbarSearchProps) {
   return (
     <div className="div-nav-search">
-      <Link to={path}>{text}</Link>
+      <Input
+        label="Search"
+        isClearable
+        classNames={{
+          label: 'text-black/50 dark:text-white/90',
+          input: [
+            'bg-transparent',
+            'text-black/90 dark:text-white/90',
+            'placeholder:text-default-700/50 dark:placeholder:text-white/60',
+          ],
+          innerWrapper: 'bg-transparent',
+        }}
+        placeholder="Type to search..."
+      ></Input>
     </div>
   );
 }
