@@ -1,5 +1,5 @@
 import './styles.scss';
-import { Link } from 'react-router-dom';
+import { Link } from '@nextui-org/react';
 
 import './styles.scss';
 
@@ -11,7 +11,9 @@ interface NavbarItemProps {
 export function NavbarItem({ text, path }: NavbarItemProps) {
   return (
     <div className="div-nav-item">
-      <Link to={path}>{text}</Link>
+      <Link href={path} color="foreground">
+        {text}
+      </Link>
     </div>
   );
 }

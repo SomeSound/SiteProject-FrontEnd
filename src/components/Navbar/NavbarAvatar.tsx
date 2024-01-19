@@ -1,5 +1,5 @@
+import { Avatar, Link } from '@nextui-org/react';
 import './styles.scss';
-import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -11,7 +11,7 @@ interface NavbarAvatarProps {
 export function NavbarAvatar({ image, path }: NavbarAvatarProps) {
   return (
     <div className="div-nav-avatar">
-      <Link to={path}>{image}</Link>
+      <Avatar src={path}>{image}</Avatar>
     </div>
   );
 }

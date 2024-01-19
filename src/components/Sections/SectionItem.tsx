@@ -1,17 +1,19 @@
 import './styles.scss';
-import { Link } from 'react-router-dom';
+import { Link, Listbox, ListboxItem } from '@nextui-org/react';
 
 import './styles.scss';
 
 interface SectionItemProps {
-  name: string;
-  path: string;
+  id: string;
+  text: string;
 }
 
-export function SectionItem({ name, path }: SectionItemProps) {
+export function SectionItem({ id, text }: SectionItemProps) {
   return (
     <div className="div-section-item">
-      <Link to={path}>{name}</Link>
+      <Listbox>
+        <ListboxItem key={id}>{text}</ListboxItem>
+      </Listbox>
     </div>
   );
 }

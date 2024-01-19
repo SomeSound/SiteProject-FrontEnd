@@ -1,23 +1,23 @@
 import { Container } from '../components/Container';
-import { Navbar } from '../components/Navbar';
 import { Playlist } from '../components/Playlist';
 import { Section } from '../components/Sections';
+
 import './styles.scss';
 
 export function Home() {
   return (
-    <div className="flex">
+    <div className="home-container flex">
       <Playlist.Root>
-        <Playlist.Items>
-          <Playlist.Item name="Playlist 1" path="#" />
-          <Playlist.Item name="Playlist 2" path="#" />
-          <Playlist.Item name="Playlist 3" path="#" />
-          <Playlist.Item name="Playlist 4" path="#" />
-          <Playlist.Item name="Playlist 5" path="#" />
-          <Playlist.Item name="Playlist 6" path="#" />
-          <Playlist.Item name="Playlist 7" path="#" />
-          <Playlist.Item name="Playlist 8" path="#" />
-        </Playlist.Items>
+        <Playlist.Item id="1" text="Playlist" />
+        <Playlist.Item id="1" text="Playlist" />
+        <Playlist.Item id="1" text="Playlist" />
+        <Playlist.Item id="1" text="Playlist" />
+        <Playlist.Item id="1" text="Playlist" />
+        <Playlist.Item id="1" text="Playlist" />
+        <Playlist.Item id="1" text="Playlist" />
+        <Playlist.Item id="1" text="Playlist" />
+        <Playlist.Item id="1" text="Playlist" />
+        <Playlist.Item id="1" text="Playlist" />
       </Playlist.Root>
 
       <div className="section-container flex">
@@ -25,10 +25,10 @@ export function Home() {
           <Container.Body>
             <Section.Root>
               <Section.Items>
-                <Section.Item name="Techno" path="/" />
-                <Section.Item name="Techno" path="/" />
-                <Section.Item name="Techno" path="/" />
-                <Section.Item name="Techno" path="/" />
+                <Section.Item text="Techno" id="1" />
+                <Section.Item text="Techno" id="1" />
+                <Section.Item text="Techno" id="1" />
+                <Section.Item text="Techno" id="1" />
               </Section.Items>
             </Section.Root>
           </Container.Body>
