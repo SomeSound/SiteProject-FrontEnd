@@ -1,39 +1,53 @@
 import { Container } from '../components/Container';
-import { Playlist } from '../components/Playlist';
 import { Section } from '../components/Sections';
 
 import './styles.scss';
 
+const sections = ['Techno', 'Hard', 'Acid', 'Rave', 'Prytrance', 'DarkPsy'];
+const artists = [
+  'ARTIST 1',
+  'ARTIST 2',
+  'ARTIST 3',
+  'ARTIST 4',
+  'ARTIST 5',
+  'ARTIST 6',
+];
+const musics = [
+  'MUSIC 1',
+  'MUSIC 2',
+  'MUSIC 3',
+  'MUSIC 4',
+  'MUSIC 5',
+  'MUSIC 6',
+];
+
 export function Home() {
   return (
-    <div className="home-container flex">
-      <Playlist.Root>
-        <Playlist.Item id="1" text="Playlist" />
-        <Playlist.Item id="1" text="Playlist" />
-        <Playlist.Item id="1" text="Playlist" />
-        <Playlist.Item id="1" text="Playlist" />
-        <Playlist.Item id="1" text="Playlist" />
-        <Playlist.Item id="1" text="Playlist" />
-        <Playlist.Item id="1" text="Playlist" />
-        <Playlist.Item id="1" text="Playlist" />
-        <Playlist.Item id="1" text="Playlist" />
-        <Playlist.Item id="1" text="Playlist" />
-      </Playlist.Root>
+    <Container.Root>
+      <Container.Body>BANNER</Container.Body>
+      <Container.Body>
+        <div className="top-section flex">
+          <div className="top-musics">
+            <Container.Root>
+              <Container.Body>
+                {musics.map((music) => (
+                  <div className="">{music}</div>
+                ))}
+              </Container.Body>
+            </Container.Root>
+          </div>
 
-      <div className="section-container flex">
-        <Container.Root>
-          <Container.Body>
-            <Section.Root>
-              <Section.Items>
-                <Section.Item text="Techno" id="1" />
-                <Section.Item text="Techno" id="1" />
-                <Section.Item text="Techno" id="1" />
-                <Section.Item text="Techno" id="1" />
-              </Section.Items>
-            </Section.Root>
-          </Container.Body>
-        </Container.Root>
-      </div>
-    </div>
+          <div className="top-artists">
+            <Container.Root>
+              <Container.Body>
+                {artists.map((artist) => (
+                  <div className="">{artist}</div>
+                ))}
+              </Container.Body>
+            </Container.Root>
+          </div>
+        </div>
+      </Container.Body>
+    </Container.Root>
   );
 }

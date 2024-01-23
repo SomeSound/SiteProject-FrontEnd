@@ -1,14 +1,17 @@
 .div-section-root {
-    margin: 10px 0px 10px 0px;
-    width: 100%;
-    background-color: antiquewhite;
+    width: auto;
+    border-radius: 0.5rem;
+    border-width: 2px;
+    border-color: red;
     padding: 20px;
     align-items: center;
 }
 
+.div-section-items {
+    display: flex;
+}
+
 .div-section-item {
     margin: 0.5rem;
-    background-color: azure;
-    padding: 0.5rem;
     align-items: center;
 }

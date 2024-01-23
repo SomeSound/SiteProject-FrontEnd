@@ -9,7 +9,7 @@ interface PlaylistItemsProps {
 
 export function PlaylistItem({ id, text }: PlaylistItemsProps) {
   return (
-    <div className="div-playlist-items">
+    <div className="div-playlist-item">
       <Listbox>
         <ListboxItem key={id}>{text}</ListboxItem>
       </Listbox>
