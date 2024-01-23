@@ -1,11 +1,23 @@
 .home-container {
-    margin: 0.5rem;
-    padding: 0.5rem;
-    background-color: gray;
     height: max-content;
+    width: 100%;
 }
 
 .section-container {
-    margin: auto;
-    margin-top: 0
+    margin: 10px;
+    margin-top: 0;
+}
+
+.top-musics{
+    width: 50%;
+}
+
+.top-artists{
+    width: 50%;
+}
+
+.top-section {
+    width: 100%;
+    border-color: red;
+    border-width: 2px;
 }
