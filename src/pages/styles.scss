@@ -1,23 +1,39 @@
-.home-container {
+.home {
     height: max-content;
     width: 100%;
 }
 
-.section-container {
-    margin: 10px;
-    margin-top: 0;
-}
-
-.top-musics{
-    width: 50%;
-}
-
-.top-artists{
-    width: 50%;
-}
-
-.top-section {
-    width: 100%;
-    border-color: red;
+.section {
+    width: 25%;
     border-width: 2px;
+}
+
+.top_sections {
+    border-width: 2px;
+    margin: 0.5rem;
+}
+
+.banner {
+    margin: auto;
+    width: 80%;
+    height: 300px;
+    border-width: 2px;
+}
+
+.recommendations {
+    border-width: 2px;
+    margin: 0.5rem;
+}
+
+.history {
+    border-width: 2px;
+    margin: 0.5rem;
+}
+
+.item {
+    margin: auto;
+}
+
+.item:hover {
+    background-color: #a9a9a9;
 }

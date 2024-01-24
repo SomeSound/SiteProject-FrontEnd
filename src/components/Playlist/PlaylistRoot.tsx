@@ -7,5 +7,5 @@ interface PlaylistRootProps {
 }
 
 export function PlaylistRoot({ children }: PlaylistRootProps) {
-  return <div className="div-playlist-root">{children}</div>;
+  return <div className="div_playlist_root">{children}</div>;
 }

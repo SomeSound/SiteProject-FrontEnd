@@ -2,7 +2,7 @@ import { Avatar, Input, Link } from '@nextui-org/react';
 
 import './styles.scss';
 
-export const Navbar: React.FC = ({}) => {
+export const Navbar = ({}) => {
   return (
     <div className="div-navbar-root">
       <div className="div-nav-logo">
@@ -29,12 +29,12 @@ export const Navbar: React.FC = ({}) => {
       <div className="div-navbar-items flex">
         <div className="div-nav-item">
           <Link href="/musics" color="foreground">
-            musics
+            Músicas
           </Link>
         </div>
         <div className="div-nav-item">
           <Link href="/artists" color="foreground">
-            artists
+            Artistas
           </Link>
         </div>
       </div>
