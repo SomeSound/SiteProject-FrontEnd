@@ -1,9 +1,14 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { ReactNode } from 'react';
+import './styles.scss';
 
 interface ContainerRootProps {
   children: ReactNode;
+  isOpen?: boolean;
 }
 
-export function ContainerRoot({ children }: ContainerRootProps) {
-  return <div className="root-container">{children}</div>;
-}
+export const ContainerRoot = ({
+  children,
+  isOpen = true,
+}: ContainerRootProps) => {
+  return isOpen ? <div className="root_container">{children}</div> : null;
+};

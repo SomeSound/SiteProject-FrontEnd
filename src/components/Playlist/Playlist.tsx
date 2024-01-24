@@ -1,9 +1,7 @@
-import { PlaylistItem } from './NavbarItem';
-import { PlaylistItems } from './PlaylistItems';
+import { PlaylistItem } from './PlaylistItem';
 import { PlaylistRoot } from './PlaylistRoot';
 
 export const Playlist = {
   Root: PlaylistRoot,
-  Items: PlaylistItems,
   Item: PlaylistItem,
 };
