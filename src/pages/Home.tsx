@@ -1,6 +1,6 @@
 import { Banner } from '../components/Banner/Banner';
-import { Card } from '../components/Cards/Card';
-import { CardSliderTrack } from '../components/Cards/CardSliderTrack';
+import { Card } from '../components/Card/Card';
+import { CardCarouselTrack } from '../components/Card/CardCarouselTrack';
 import { Container } from '../components/Container';
 
 import './styles.scss';
@@ -17,18 +17,6 @@ const artists = [
   'ARTIST 8',
   'ARTIST 9',
   'ARTIST 10',
-];
-const musics = [
-  'MUSIC 1',
-  'MUSIC 2',
-  'MUSIC 3',
-  'MUSIC 4',
-  'MUSIC 5',
-  'MUSIC 6',
-  'MUSIC 7',
-  'MUSIC 8',
-  'MUSIC 9',
-  'MUSIC 10',
 ];
 
 const albums = [
@@ -80,27 +68,27 @@ const recommendations = [
 const images = [
   {
     id: '1',
-    src: 'https://www.pontotel.com.br/wp-content/uploads/2022/05/imagem-corporativa.jpg',
+    src: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/2745ba37867307.574eee5ce97df.jpg',
   },
   {
     id: '2',
-    src: 'https://www.pontotel.com.br/wp-content/uploads/2022/05/imagem-corporativa.jpg',
+    src: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/2745ba37867307.574eee5ce97df.jpg',
   },
   {
     id: '3',
-    src: 'https://www.pontotel.com.br/wp-content/uploads/2022/05/imagem-corporativa.jpg',
+    src: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/2745ba37867307.574eee5ce97df.jpg',
   },
   {
     id: '4',
-    src: 'https://www.pontotel.com.br/wp-content/uploads/2022/05/imagem-corporativa.jpg',
+    src: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/2745ba37867307.574eee5ce97df.jpg',
   },
   {
     id: '5',
-    src: 'https://www.pontotel.com.br/wp-content/uploads/2022/05/imagem-corporativa.jpg',
+    src: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/2745ba37867307.574eee5ce97df.jpg',
   },
 ];
 
-const musicsSlider = [
+const allData = [
   {
     id: '1',
     image:
@@ -180,7 +168,7 @@ export function Home() {
           <Container.Header title="Recomendações" />
           <Container.Body>
             <div className="flex">
-              {/* <CardSliderTrack data={musicsSlider} /> */}
+              <CardCarouselTrack data={allData} />
             </div>
           </Container.Body>
         </Container.Root>
@@ -191,10 +179,10 @@ export function Home() {
           <Container.Root>
             <Container.Header title="Top Músicas" />
             <Container.Body>
-              {musics.map((item, index) => (
-                <div className="item" key={index}>
+              {allData.map((item, index) => (
+                <div className="item" key={item.id}>
                   <Card.Root>
-                    <Card.Track />
+                    <Card.Track image={item.image} />
                     <Card.Description text="Descrição" />
                   </Card.Root>
                 </div>
@@ -207,10 +195,10 @@ export function Home() {
           <Container.Root>
             <Container.Header title="Top Artistas" />
             <Container.Body>
-              {artists.map((item, index) => (
+              {allData.map((item, index) => (
                 <div className="item" key={index}>
                   <Card.Root>
-                    <Card.Track />
+                    <Card.Track image={item.image} />
                     <Card.Description text="Descrição" />
                   </Card.Root>
                 </div>
@@ -223,10 +211,10 @@ export function Home() {
           <Container.Root>
             <Container.Header title="Top Albums" />
             <Container.Body>
-              {albums.map((item, index) => (
+              {allData.map((item, index) => (
                 <div className="item" key={index}>
                   <Card.Root>
-                    <Card.Track />
+                    <Card.Track image={item.image} />
                     <Card.Description text="Descrição" />
                   </Card.Root>
                 </div>
@@ -239,10 +227,10 @@ export function Home() {
           <Container.Root>
             <Container.Header title="Top Gravadoras" />
             <Container.Body>
-              {records.map((record, index) => (
+              {allData.map((item, index) => (
                 <div className="item" key={index}>
                   <Card.Root>
-                    <Card.Track />
+                    <Card.Track image={item.image} />
                     <Card.Description text="Descrição" />
                   </Card.Root>
                 </div>
@@ -257,7 +245,7 @@ export function Home() {
           <Container.Header title="Histórico" />
           <Container.Body>
             <div className="flex">
-              {/* <CardSliderTrack data={musicsSlider} /> */}
+              <CardCarouselTrack data={allData} />
             </div>
           </Container.Body>
         </Container.Root>
