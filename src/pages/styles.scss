@@ -1,28 +1,28 @@
 .home {
-    height: max-content;
+    height: 100%;
     width: 100%;
+    max-width: 100%;
+}
+
+.banner {
+    margin: 1rem;
+    max-width: auto;
+    align-items: center;
+}
+
+.recommendations .history{
+    margin: 1rem;
+    max-width: auto;
+    align-items: center;
 }
 
 .section {
     width: 25%;
+    margin: 0.5rem;
 }
 
 .top_sections {
-    margin: 0.5rem;
-}
-
-.banner {
-    margin: auto;
-    width: 80%;
-    height: 300px;
-}
-
-.recommendations {
-    margin: 0.5rem;
-}
-
-.history {
-    margin: 0.5rem;
+    margin: 1rem;
 }
 
 .item {

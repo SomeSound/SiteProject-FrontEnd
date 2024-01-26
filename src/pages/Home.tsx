@@ -1,4 +1,6 @@
+import { Banner } from '../components/Banner/Banner';
 import { Card } from '../components/Cards/Card';
+import { CardSliderTrack } from '../components/Cards/CardSliderTrack';
 import { Container } from '../components/Container';
 
 import './styles.scss';
@@ -75,116 +77,191 @@ const recommendations = [
   'RECOMMENDATION 7',
 ];
 
+const images = [
+  {
+    id: '1',
+    src: 'https://www.pontotel.com.br/wp-content/uploads/2022/05/imagem-corporativa.jpg',
+  },
+  {
+    id: '2',
+    src: 'https://www.pontotel.com.br/wp-content/uploads/2022/05/imagem-corporativa.jpg',
+  },
+  {
+    id: '3',
+    src: 'https://www.pontotel.com.br/wp-content/uploads/2022/05/imagem-corporativa.jpg',
+  },
+  {
+    id: '4',
+    src: 'https://www.pontotel.com.br/wp-content/uploads/2022/05/imagem-corporativa.jpg',
+  },
+  {
+    id: '5',
+    src: 'https://www.pontotel.com.br/wp-content/uploads/2022/05/imagem-corporativa.jpg',
+  },
+];
+
+const musicsSlider = [
+  {
+    id: '1',
+    image:
+      'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long',
+  },
+  {
+    id: '2',
+    image:
+      'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long',
+  },
+  {
+    id: '3',
+    image:
+      'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long',
+  },
+  {
+    id: '4',
+    image:
+      'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long',
+  },
+  {
+    id: '5',
+    image:
+      'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long',
+  },
+  {
+    id: '6',
+    image:
+      'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long',
+  },
+  {
+    id: '7',
+    image:
+      'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long',
+  },
+  {
+    id: '8',
+    image:
+      'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long',
+  },
+  {
+    id: '9',
+    image:
+      'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long',
+  },
+  {
+    id: '10',
+    image:
+      'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long',
+  },
+  {
+    id: '11',
+    image:
+      'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long',
+  },
+  {
+    id: '12',
+    image:
+      'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long',
+  },
+  {
+    id: '13',
+    image:
+      'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long',
+  },
+];
+
 export function Home() {
   return (
-    <>
-      <div className="home">
-        <div className="banner">
-          <Container.Root>
-            <Container.Body>BANNERS</Container.Body>
-          </Container.Root>
-        </div>
+    <div className="home">
+      <div className="banner">
+        <Banner data={images} />
+      </div>
 
-        <div className="recommendations">
+      <div className="recommendations">
+        <Container.Root>
+          <Container.Header title="Recomendações" />
+          <Container.Body>
+            <div className="flex">
+              {/* <CardSliderTrack data={musicsSlider} /> */}
+            </div>
+          </Container.Body>
+        </Container.Root>
+      </div>
+
+      <div className="top_sections flex">
+        <div className="section musics">
           <Container.Root>
-            <Container.Header title="Recomendações" />
+            <Container.Header title="Top Músicas" />
             <Container.Body>
-              <div className="flex">
-                {recommendations.map((item, index) => (
-                  <div className="item" key={index}>
-                    <Card.Root>
-                      <Card.Track />
-                    </Card.Root>
-                  </div>
-                ))}
-              </div>
+              {musics.map((item, index) => (
+                <div className="item" key={index}>
+                  <Card.Root>
+                    <Card.Track />
+                    <Card.Description text="Descrição" />
+                  </Card.Root>
+                </div>
+              ))}
             </Container.Body>
           </Container.Root>
         </div>
 
-        <div className="top_sections flex">
-          <div className="section musics">
-            <Container.Root>
-              <Container.Header title="Top Músicas" />
-              <Container.Body>
-                {musics.map((item, index) => (
-                  <div className="item" key={index}>
-                    <Card.Root>
-                      <Card.Track />
-                      <Card.Description text="Descrição" />
-                    </Card.Root>
-                  </div>
-                ))}
-              </Container.Body>
-            </Container.Root>
-          </div>
-
-          <div className="section artists">
-            <Container.Root>
-              <Container.Header title="Top Artistas" />
-              <Container.Body>
-                {artists.map((item, index) => (
-                  <div className="item" key={index}>
-                    <Card.Root>
-                      <Card.Track />
-                      <Card.Description text="Descrição" />
-                    </Card.Root>
-                  </div>
-                ))}
-              </Container.Body>
-            </Container.Root>
-          </div>
-
-          <div className="section albums">
-            <Container.Root>
-              <Container.Header title="Top Albums" />
-              <Container.Body>
-                {albums.map((item, index) => (
-                  <div className="item" key={index}>
-                    <Card.Root>
-                      <Card.Track />
-                      <Card.Description text="Descrição" />
-                    </Card.Root>
-                  </div>
-                ))}
-              </Container.Body>
-            </Container.Root>
-          </div>
-
-          <div className="section records">
-            <Container.Root>
-              <Container.Header title="Top Gravadoras" />
-              <Container.Body>
-                {records.map((record, index) => (
-                  <div className="item" key={index}>
-                    <Card.Root>
-                      <Card.Track />
-                      <Card.Description text="Descrição" />
-                    </Card.Root>
-                  </div>
-                ))}
-              </Container.Body>
-            </Container.Root>
-          </div>
+        <div className="section artists">
+          <Container.Root>
+            <Container.Header title="Top Artistas" />
+            <Container.Body>
+              {artists.map((item, index) => (
+                <div className="item" key={index}>
+                  <Card.Root>
+                    <Card.Track />
+                    <Card.Description text="Descrição" />
+                  </Card.Root>
+                </div>
+              ))}
+            </Container.Body>
+          </Container.Root>
         </div>
 
-        <div className="history">
+        <div className="section albums">
           <Container.Root>
-            <Container.Header title="Histórico" />
+            <Container.Header title="Top Albums" />
             <Container.Body>
-              <div className="flex">
-                {history.map((history, index) => (
-                  <div className="item" key={index}>
-                    <Card.Root>
-                      <Card.Track />
-                    </Card.Root>
-                  </div>
-                ))}
-              </div>
+              {albums.map((item, index) => (
+                <div className="item" key={index}>
+                  <Card.Root>
+                    <Card.Track />
+                    <Card.Description text="Descrição" />
+                  </Card.Root>
+                </div>
+              ))}
+            </Container.Body>
+          </Container.Root>
+        </div>
+
+        <div className="section records">
+          <Container.Root>
+            <Container.Header title="Top Gravadoras" />
+            <Container.Body>
+              {records.map((record, index) => (
+                <div className="item" key={index}>
+                  <Card.Root>
+                    <Card.Track />
+                    <Card.Description text="Descrição" />
+                  </Card.Root>
+                </div>
+              ))}
             </Container.Body>
           </Container.Root>
         </div>
       </div>
-    </>
+
+      <div className="history">
+        <Container.Root>
+          <Container.Header title="Histórico" />
+          <Container.Body>
+            <div className="flex">
+              {/* <CardSliderTrack data={musicsSlider} /> */}
+            </div>
+          </Container.Body>
+        </Container.Root>
+      </div>
+    </div>
   );
 }

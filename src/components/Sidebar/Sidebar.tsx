@@ -7,17 +7,15 @@ interface SidebarProps {
 
 export const Sidebar = ({ children }: SidebarProps) => {
   return (
-    <>
-      <div className="flex">
-        <div className="sidebar">
-          <Listbox>
-            <ListboxItem key="collections">Collections</ListboxItem>
-            <ListboxItem key="playlists">Playlists</ListboxItem>
-          </Listbox>
-        </div>
-
-        {children}
+    <div className="flex">
+      <div className="sidebar">
+        <Listbox>
+          <ListboxItem key="collections">Collections</ListboxItem>
+          <ListboxItem key="playlists">Playlists</ListboxItem>
+        </Listbox>
       </div>
-    </>
+
+      {children}
+    </div>
   );
 };

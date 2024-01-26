@@ -10,6 +10,23 @@ export const Navbar = ({}) => {
           Logo Here
         </Link>
       </div>
+      <div className="div-navbar-items flex">
+        <div className="div-nav-item">
+          <Link href="/" color="foreground">
+            Gêneros
+          </Link>
+        </div>
+        <div className="div-nav-item">
+          <Link href="/musics" color="foreground">
+            Músicas
+          </Link>
+        </div>
+        <div className="div-nav-item">
+          <Link href="/artists" color="foreground">
+            Artistas
+          </Link>
+        </div>
+      </div>
       <div className="div-nav-search">
         <Input
           label="Search"
@@ -25,18 +42,6 @@ export const Navbar = ({}) => {
           }}
           placeholder="Type to search..."
         ></Input>
-      </div>
-      <div className="div-navbar-items flex">
-        <div className="div-nav-item">
-          <Link href="/musics" color="foreground">
-            Músicas
-          </Link>
-        </div>
-        <div className="div-nav-item">
-          <Link href="/artists" color="foreground">
-            Artistas
-          </Link>
-        </div>
       </div>
       <div className="div-nav-avatar">
         <Avatar src="/profile" />

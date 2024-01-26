@@ -6,7 +6,6 @@ import { NextIcon } from './NextIcon';
 import { PreviousIcon } from './PreviousIcon';
 import { RepeatOneIcon } from './RepeatOneIcon';
 import { ShuffleIcon } from './ShuffleIcon';
-import { twMerge } from 'tailwind-merge';
 
 import './styles.scss';
 
