@@ -13,10 +13,10 @@ export const Player = () => {
   const [liked, setLiked] = React.useState(false);
 
   return (
-    <div className="player">
+    <div className="player w-full">
       <Card
         isBlurred
-        className="border-none bg-background/60 dark:bg-default-100/50 max-w-[610px]"
+        className="border-none bg-background/60 dark:bg-default-100/50"
         shadow="sm"
       >
         <CardBody>
@@ -29,7 +29,7 @@ export const Player = () => {
                 width={100}
               />
             </div>
-            <div className="flex flex-col col-span-6 md:col-span-8 w-full">
+            <div className="flex w-full">
               <div className="flex justify-between items-start">
                 <div className="flex flex-col gap-0">
                   <h1 className="text-large font-medium mt-2">TRACK NAME</h1>
@@ -49,64 +49,66 @@ export const Player = () => {
                 </Button>
               </div>
 
-              <div className="flex flex-col mt-3 gap-1">
-                <Slider
-                  aria-label="Music progress"
-                  classNames={{
-                    track: 'bg-default-500/30',
-                    thumb: 'w-2 h-2 after:w-2 after:h-2 after:bg-foreground',
-                  }}
-                  color="foreground"
-                  defaultValue={33}
-                  size="sm"
-                />
-                <div className="flex justify-between">
-                  <p className="text-small">1:23</p>
-                  <p className="text-small text-foreground/50">4:32</p>
+              <div className="w-full">
+                <div className="button_section">
+                  <div className="flex w-full justify-center">
+                    <Button
+                      isIconOnly
+                      className="data-[hover]:bg-foreground/10"
+                      radius="full"
+                      variant="light"
+                    >
+                      <RepeatOneIcon className="text-foreground/80" />
+                    </Button>
+                    <Button
+                      isIconOnly
+                      className="data-[hover]:bg-foreground/10"
+                      radius="full"
+                      variant="light"
+                    >
+                      <PreviousIcon />
+                    </Button>
+                    <Button
+                      isIconOnly
+                      className="w-auto h-auto data-[hover]:bg-foreground/10"
+                      radius="full"
+                      variant="light"
+                    >
+                      <PauseCircleIcon size={54} />
+                    </Button>
+                    <Button
+                      isIconOnly
+                      className="data-[hover]:bg-foreground/10"
+                      radius="full"
+                      variant="light"
+                    >
+                      <NextIcon />
+                    </Button>
+                    <Button
+                      isIconOnly
+                      className="data-[hover]:bg-foreground/10"
+                      radius="full"
+                      variant="light"
+                    >
+                      <ShuffleIcon className="text-foreground/80" />
+                    </Button>
+                  </div>
                 </div>
-              </div>
-
-              <div className="flex w-full items-center justify-center">
-                <Button
-                  isIconOnly
-                  className="data-[hover]:bg-foreground/10"
-                  radius="full"
-                  variant="light"
-                >
-                  <RepeatOneIcon className="text-foreground/80" />
-                </Button>
-                <Button
-                  isIconOnly
-                  className="data-[hover]:bg-foreground/10"
-                  radius="full"
-                  variant="light"
-                >
-                  <PreviousIcon />
-                </Button>
-                <Button
-                  isIconOnly
-                  className="w-auto h-auto data-[hover]:bg-foreground/10"
-                  radius="full"
-                  variant="light"
-                >
-                  <PauseCircleIcon size={54} />
-                </Button>
-                <Button
-                  isIconOnly
-                  className="data-[hover]:bg-foreground/10"
-                  radius="full"
-                  variant="light"
-                >
-                  <NextIcon />
-                </Button>
-                <Button
-                  isIconOnly
-                  className="data-[hover]:bg-foreground/10"
-                  radius="full"
-                  variant="light"
-                >
-                  <ShuffleIcon className="text-foreground/80" />
-                </Button>
+                <div className="flex flex-col">
+                  <Slider
+                    classNames={{
+                      track: 'bg-default-500/30',
+                      thumb: 'w-2 h-2 after:w-2 after:h-2 after:bg-foreground',
+                    }}
+                    color="foreground"
+                    defaultValue={33}
+                    size="sm"
+                  />
+                  <div className="flex justify-between">
+                    <p className="text-small">1:23</p>
+                    <p className="text-small text-foreground/50">4:32</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -9,6 +9,7 @@ module.exports = {
     filename: 'bundle.js',
   },
   devServer: {
+    contentBase: "./build",
     static: './dist',
   },
   module: {
@@ -26,7 +27,11 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+     }
     ],
   },
   resolve: {
@@ -34,7 +39,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html',
+      template: path.resolve('./index.html'),
     }),
   ],
 };
