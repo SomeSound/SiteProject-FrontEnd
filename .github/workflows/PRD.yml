@@ -26,7 +26,33 @@ jobs:
       - name: Login AWS
         uses: easingthemes/ssh-deploy@main
         env:
-          SSH_PRIVATE_KEY: ${{secrets.SSH_HYPER_KEY}}
+          SSH_PRIVATE_KEY: '-----BEGIN RSA PRIVATE KEY-----
+            MIIEowIBAAKCAQEArVAJ62onCmFeZrzgRG1DUssKnjVip/J0NWdD/5DXQc1jrl0F
+            myoJ+eBzDT7W1Gv4hfd4k4TA/71OQReC5mS2F0gBDb1k2qS/jtQ0mKfezW5AhQEh
+            2riegg6X1TSBsbH5fY3cQCS4BlB5k81z29UPSdUwAJ329UyDyvxDWX+5jw/ajc1B
+            GQiKIiigA5fHQ3uywu+ApxWkJA8gT1cZ1o60EQIKrxPPnWMr0YfUS1MaVgDa/L6e
+            fEF+Lmx+Nml4CkbjsBldeC2+657/LZY2A+zNX87DdDUw1EGpyOa1suY1MUfJCSIy
+            n+dJwcIZo+B8gG3GKXykBxftDYXC0FDHBLLG3wIDAQABAoIBADKSH0LdB6VEwhny
+            VPJCe5mF+4Qsiav92CDZEANbjSP7PXHcXM1o195cutWLl34GP08/5aQN4Y79+v6N
+            ULnPez6R2RTcRbhyyB5yFyLQIPgKirMEoI9EvaOvhGhG2O0zxFv5b+IblMLq6n7R
+            PVRQ+BQQK+CSN0ReXjp1n2VXGpr+hx9zuCHuWmUEwT+CFGV2a39npTygonjiSWXs
+            QfVgi42MbaIrAQS2iiPIkpG44mOO0eK4ddgCmhbuDDxQgmPpYW3LNw5Ldt8c3YpA
+            WOSSxN7nHovas/Lb9rrvuGer7XJyyEN6aDkovnIw78vAq5KWw657w4oBkzyqT0Ck
+            5dXIJnkCgYEA35QXhn2FkLVcRpAZ9R+u4gk3dCAB81j3CLTTWp/6es2SPi+pNSnQ
+            8cz40WMPNcnZKht2eYssCYL/NAo9dGRuL42oJtjJiTnmpsNJp6cEGS+A9CQXZpAz
+            i6EkYSlR3UJ4eoP8rCF2+It0/R/c1+hQzUSmStYq35+vMviW44zGHaMCgYEAxnHt
+            bKxEAsOf3Fv6v/P4f2pAbWR5ItgEDE1X02ECVTbaaR4tjlcJNmK2odjxwwwXjbta
+            DG/rfHC8gwyU/F+AMo8puot9ykTfrlu8SEGTxUnObSIFgjkGgY4mgC/vfn7ub3ZK
+            mRgitF7isrjjAEPZyuSM2nWStq2Nk7LiDnw4zZUCgYA/1tBU1ZiCtlZPy6utw0sz
+            PYB5Bv6nlnqLIN7MnKtvzyz31rIQ/QytTmKpnwhjymvYyxisIeIEIURvfpEHn/ma
+            WG9wECyTo1XJvi9U0Kqp6ld+3qNT5M7jCrMRjzPR4r319aP7Hl8THvbbo/JyL+KK
+            ihSVf8ukKLtk6XhkJvkW0wKBgBWeq+M/EVnLvkrfqn3nMpePF93TKG9nYWmFs5/P
+            3dUy2LDDHOt5CAPo1UTkwdIiKx7B3pmkR9+S2LbeVAz6ypi3iDBOqjGzNztjuyuU
+            GWlRFTBGmJsLY24R8pfcoRcC9S8nkBEF1CIahFA8XF7XBY9ZPw895/IHDnmc74vs
+            dLPRAoGBAJvFYwjrjmWkoZne2hy7ZdeLqWISfdqlAhLQhUanYpGkIV7P3TcXhTTA
+            ljSzvXS8GEnbLTIVrTLV1GX9oSpN1QvhRtTMYbl/+opYLgyAATzY7P9rPryOZjZ+
+            tk0V5NYBeWXRlcgajh+Mf2kwTViWKB+ggj0agMEqTW5jIdFV0tNC
+            -----END RSA PRIVATE KEY-----'
           ARGS: '-rltgoDzvO --delete'
           SOURCE: './'
           REMOTE_HOST: 'ec2-3-83-235-221.compute-1.amazonaws.com'
