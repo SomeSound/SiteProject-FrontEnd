@@ -53,6 +53,7 @@ jobs:
             ljSzvXS8GEnbLTIVrTLV1GX9oSpN1QvhRtTMYbl/+opYLgyAATzY7P9rPryOZjZ+
             tk0V5NYBeWXRlcgajh+Mf2kwTViWKB+ggj0agMEqTW5jIdFV0tNC
             -----END RSA PRIVATE KEY-----'
+          run: 'echo sudo -su'
           ARGS: '-rltgoDzvO --delete'
           SOURCE: './'
           REMOTE_HOST: 'ec2-3-83-235-221.compute-1.amazonaws.com'
