@@ -9,7 +9,6 @@ module.exports = {
     filename: 'bundle.js',
   },
   devServer: {
-    contentBase: "./build",
     static: './dist',
   },
   module: {
