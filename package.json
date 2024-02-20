@@ -1,8 +1,8 @@
 {
-  "name": "Hyper",
+  "name": "hyper",
   "main": "index.html",
   "scripts": {
-    "start": "webpack serve --mode development --hot",
+    "start": "webpack serve --port 3000 --mode development --hot",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:watch": "jest --watch",
     "build": "webpack --mode production",
@@ -27,6 +27,7 @@
     "flowbite-react": "^0.7.2",
     "framer-motion": "^10.18.0",
     "lucide-react": "^0.315.0",
+    "nginx": "^1.0.8",
     "react-refresh": "^0.14.0",
     "react-router-dom": "^6.21.3",
     "scss": "^0.2.4",
