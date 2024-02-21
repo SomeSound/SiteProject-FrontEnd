@@ -11,7 +11,7 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@nextui-org/theme/build/**/*.{js,ts,jsx,tsx}',
   ],
   prefix: "",
   theme: {

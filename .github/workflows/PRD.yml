@@ -35,7 +35,7 @@ jobs:
           REMOTE_HOST: 'ec2-3-83-235-221.compute-1.amazonaws.com'
           REMOTE_USER: 'ec2-user'
           TARGET: '/var/www/html/'
-          EXCLUDE: '/dist/, /node_modules/, **.env, rebuild_app.sh, watcher.sh'
+          EXCLUDE: '/build/, /node_modules/, **.env, rebuild_app.sh, watcher.sh'
 
       - uses: easingthemes/ssh-deploy@main
 
