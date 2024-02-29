@@ -50,6 +50,21 @@ export const Player = () => {
               </div>
 
               <div className="w-full">
+                <div className="flex flex-col">
+                  <Slider
+                    classNames={{
+                      track: 'bg-default-500/30',
+                      thumb: 'w-2 h-2 after:w-2 after:h-2 after:bg-foreground',
+                    }}
+                    color="foreground"
+                    defaultValue={33}
+                    size="sm"
+                  />
+                  <div className="flex justify-between">
+                    <p className="text-small">1:23</p>
+                    <p className="text-small text-foreground/50">4:32</p>
+                  </div>
+                </div>
                 <div className="button_section">
                   <div className="flex w-full justify-center">
                     <Button
@@ -92,21 +107,6 @@ export const Player = () => {
                     >
                       <ShuffleIcon className="text-foreground/80" />
                     </Button>
-                  </div>
-                </div>
-                <div className="flex flex-col">
-                  <Slider
-                    classNames={{
-                      track: 'bg-default-500/30',
-                      thumb: 'w-2 h-2 after:w-2 after:h-2 after:bg-foreground',
-                    }}
-                    color="foreground"
-                    defaultValue={33}
-                    size="sm"
-                  />
-                  <div className="flex justify-between">
-                    <p className="text-small">1:23</p>
-                    <p className="text-small text-foreground/50">4:32</p>
                   </div>
                 </div>
               </div>

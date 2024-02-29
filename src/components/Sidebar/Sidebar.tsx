@@ -12,6 +12,7 @@ export const Sidebar = ({ children }: SidebarProps) => {
         <Listbox>
           <ListboxItem key="collections">Collections</ListboxItem>
           <ListboxItem key="playlists">Playlists</ListboxItem>
+          <ListboxItem key="playlists">Curtidas</ListboxItem>
         </Listbox>
       </div>
 
