@@ -1,15 +1,11 @@
-import { ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import { CardBody } from '@nextui-org/react';
 import './styles.scss';
 
-interface PlayerBodyProps {
+interface PlayerBodyProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
 export const PlayerBody = ({ children }: PlayerBodyProps) => {
-  return (
-    <CardBody>
-      <div className="items-center justify-center flex">{children}</div>
-    </CardBody>
-  );
+  return <CardBody>{children}</CardBody>;
 };

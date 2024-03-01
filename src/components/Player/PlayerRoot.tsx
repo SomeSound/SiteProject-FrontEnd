@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import { Card } from '@nextui-org/react';
 
 import './styles.scss';
 
-interface PlayerRootProps {
+interface PlayerRootProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 

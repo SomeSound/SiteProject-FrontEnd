@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import './styles.scss';
 
-interface ContainerRootProps {
+interface ContainerRootProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   isOpen?: boolean;
 }

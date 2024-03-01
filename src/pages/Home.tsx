@@ -5,6 +5,8 @@ import { CardCarouselTrack } from '../components/Card/CardCarouselTrack';
 import { Container } from '../components/Container';
 
 import './styles.scss';
+import { Player } from '../components/Player';
+import { PlayerBody } from '../components/Player/PlayerBody';
 
 const sections = ['Techno', 'Hard', 'Acid', 'Rave', 'Prytrance', 'DarkPsy'];
 const artists = [
@@ -164,93 +166,98 @@ export function Home() {
         <Banner data={images} />
       </div>
 
-      <div className="recommendations">
-        <Container.Root>
-          <Container.Header title="Recomendações" />
+      <div className="top_sections flex">
+        <Container.Root className="section musics">
           <Container.Body>
-            <div className="flex">
-              <CardCarouselTrack data={allData} />
-            </div>
+            <Player.Root>
+              <Player.Body>
+                <Player.Image
+                  artistName="ArtistName"
+                  trackName="TrackName"
+                  imageUrl="https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long"
+                />
+              </Player.Body>
+            </Player.Root>
+          </Container.Body>
+        </Container.Root>
+
+        {/* <div className="top_sections flex">
+        <Container.Root className="section musics">
+          <Container.Header title="Top Músicas" />
+          <Container.Body>
+            {allData.map((item, index) => (
+              <div className="item" key={item.id}>
+                <Card.Root>
+                  <Card.Track image={item.image} />
+                  <Card.Description text="Descrição" />
+                </Card.Root>
+              </div>
+            ))}
+          </Container.Body>
+        </Container.Root> */}
+
+        <Container.Root className="section artists">
+          <Container.Header title="Top Artistas" />
+          <Container.Body>
+            {allData.map((item, index) => (
+              <div className="item" key={index}>
+                <Card.Root>
+                  <Card.Track image={item.image} />
+                  <Card.Description text="Descrição" />
+                </Card.Root>
+              </div>
+            ))}
           </Container.Body>
         </Container.Root>
       </div>
+
+      <Container.Root className="recommendations">
+        <Container.Header title="Recomendações" />
+        <Container.Body>
+          <div className="flex">
+            <CardCarouselTrack data={allData} />
+          </div>
+        </Container.Body>
+      </Container.Root>
 
       <div className="top_sections flex">
-        <div className="section musics">
-          <Container.Root>
-            <Container.Header title="Top Músicas" />
-            <Container.Body>
-              {allData.map((item, index) => (
-                <div className="item" key={item.id}>
-                  <Card.Root>
-                    <Card.Track image={item.image} />
-                    <Card.Description text="Descrição" />
-                  </Card.Root>
-                </div>
-              ))}
-            </Container.Body>
-          </Container.Root>
-        </div>
-
-        <div className="section artists">
-          <Container.Root>
-            <Container.Header title="Top Artistas" />
-            <Container.Body>
-              {allData.map((item, index) => (
-                <div className="item" key={index}>
-                  <Card.Root>
-                    <Card.Track image={item.image} />
-                    <Card.Description text="Descrição" />
-                  </Card.Root>
-                </div>
-              ))}
-            </Container.Body>
-          </Container.Root>
-        </div>
-
-        <div className="section albums">
-          <Container.Root>
-            <Container.Header title="Top Albums" />
-            <Container.Body>
-              {allData.map((item, index) => (
-                <div className="item" key={index}>
-                  <Card.Root>
-                    <Card.Track image={item.image} />
-                    <Card.Description text="Descrição" />
-                  </Card.Root>
-                </div>
-              ))}
-            </Container.Body>
-          </Container.Root>
-        </div>
-
-        <div className="section records">
-          <Container.Root>
-            <Container.Header title="Top Gravadoras" />
-            <Container.Body>
-              {allData.map((item, index) => (
-                <div className="item" key={index}>
-                  <Card.Root>
-                    <Card.Track image={item.image} />
-                    <Card.Description text="Descrição" />
-                  </Card.Root>
-                </div>
-              ))}
-            </Container.Body>
-          </Container.Root>
-        </div>
-      </div>
-
-      <div className="history">
-        <Container.Root>
-          <Container.Header title="Histórico" />
+        <Container.Root className="section albums">
+          <Container.Header title="Top Albums" />
           <Container.Body>
-            <div className="flex">
-              <CardCarouselTrack data={allData} />
-            </div>
+            {allData.map((item, index) => (
+              <div className="item" key={index}>
+                <Card.Root>
+                  <Card.Track image={item.image} />
+                  <Card.Description text="Descrição" />
+                </Card.Root>
+              </div>
+            ))}
+          </Container.Body>
+        </Container.Root>
+
+        <Container.Root className="section records">
+          <Container.Header title="Top Gravadoras" />
+          <Container.Body>
+            {allData.map((item, index) => (
+              <div className="item" key={index}>
+                <Card.Root>
+                  <Card.Track image={item.image} />
+                  <Card.Description text="Descrição" />
+                </Card.Root>
+              </div>
+            ))}
           </Container.Body>
         </Container.Root>
       </div>
+
+      <Container.Root className="history">
+        <Container.Header title="Histórico" />
+        <Container.Body>
+          <div className="flex">
+            <CardCarouselTrack data={allData} />
+          </div>
+        </Container.Body>
+      </Container.Root>
     </div>
   );
 }
