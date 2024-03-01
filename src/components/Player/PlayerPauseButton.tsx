@@ -1,5 +1,5 @@
 import { Button } from '@nextui-org/react';
-import { PauseCircleIcon } from './PauseCircleIcon';
+import { PauseCircleIcon } from '../Icons/PauseCircleIcon';
 
 import './styles.scss';
 

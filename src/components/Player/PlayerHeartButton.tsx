@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@nextui-org/react';
 
 import './styles.scss';
-import { HeartIcon } from './HeartIcon';
+import { HeartIcon } from '../Icons/HeartIcon';
 
 export const PlayerHeartButton = () => {
   const [liked, setLiked] = React.useState(false);

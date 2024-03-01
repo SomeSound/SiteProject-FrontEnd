@@ -1,5 +1,5 @@
 import { Button } from '@nextui-org/react';
-import { NextIcon } from './NextIcon';
+import { RepeatOneIcon } from '../Icons/RepeatOneIcon';
 
 import './styles.scss';
 
@@ -11,7 +11,7 @@ export const PlayerRepeatButton = () => {
       radius="full"
       variant="light"
     >
-      <NextIcon />
+      <RepeatOneIcon className="text-foreground/80" />
     </Button>
   );
 };

@@ -1,4 +1,3 @@
-import React from 'react';
 export const PreviousIcon = ({
   size = 24,
   width = 24,

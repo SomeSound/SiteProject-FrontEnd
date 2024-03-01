@@ -1,5 +1,5 @@
 import { Button } from '@nextui-org/react';
-import { NextIcon } from './NextIcon';
+import { NextIcon } from '../Icons/NextIcon';
 
 import './styles.scss';
 
