@@ -17,7 +17,7 @@ export const PlayerImage = ({
   return (
     <div className="flex">
       <Image className="object-cover" shadow="md" src={imageUrl} width={100} />
-      <div className="flex flex-col gap-0 info">
+      <div className="info">
         <h1 className="text-large font-medium mt-1">{trackName}</h1>
         <p className="text-small text-foreground/80">{artistName}</p>
       </div>

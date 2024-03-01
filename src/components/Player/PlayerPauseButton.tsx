@@ -11,7 +11,7 @@ export const PlayerPauseButton = () => {
       radius="full"
       variant="light"
     >
-      <PauseCircleIcon size={54} />
+      <PauseCircleIcon size={42} />
     </Button>
   );
 };
