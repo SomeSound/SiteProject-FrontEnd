@@ -1,4 +1,5 @@
 import { Input } from '@nextui-org/react';
+import './styles.scss';
 
 export const Login = () => {
   return (

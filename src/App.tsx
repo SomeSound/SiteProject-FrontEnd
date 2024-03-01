@@ -6,7 +6,7 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 
 import './output.scss';
 import './styles.scss';
-import { Player } from './components/Player/Player';
+import { PlayerComponent } from './components/Player/Player';
 
 export const App = () => {
   return (
@@ -18,7 +18,7 @@ export const App = () => {
           <AppRoutes />
         </Sidebar>
 
-        <Player />
+        <PlayerComponent />
       </NextUIProvider>
     </BrowserRouter>
   );
