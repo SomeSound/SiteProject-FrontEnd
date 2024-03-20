@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useDisclosure } from '@nextui-org/react';
 import { Banner } from '../components/Banner/Banner';
 import { Card } from '../components/Card/Card';
 import { CardCarouselTrack } from '../components/Card/CardCarouselTrack';
 import { Container } from '../components/Container';
+import { Player } from '../components/Player';
+import { Button } from '../components/shadcn/button';
+import { getAllTracks as getAllTracks } from '../services/track';
 
 import './styles.scss';
-import { Player } from '../components/Player';
-import { PlayerBody } from '../components/Player/PlayerBody';
+import { Modal } from '../components/Modal';
+import { UploadRoot } from '../components/Upload/UploadRoot';
+import { Upload } from '../components/Upload';
 
 const sections = ['Techno', 'Hard', 'Acid', 'Rave', 'Prytrance', 'DarkPsy'];
 const artists = [
@@ -159,11 +163,50 @@ const allData = [
   },
 ];
 
+async function handleGetTrackByArtist() {
+  try {
+    const response = await getAllTracks();
+    console.log(response);
+  } catch (error) {
+    console.log('Error get Tracks', error);
+  }
+}
+
 export function Home() {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   return (
     <div className="home">
+      <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
+        <Modal.Header text="Upload Track" />
+        <Modal.Body rememberPass forgotPass>
+          <Upload.Root>
+            <Upload.Input />
+            <Upload.Dropzone />
+            <Upload.List />
+          </Upload.Root>
+        </Modal.Body>
+        <Modal.Footer>
+          <Modal.SignInButton />
+        </Modal.Footer>
+      </Modal.Root>
+
       <div className="banner">
         <Banner data={images} />
+      </div>
+
+      <div className="flex">
+        <Container.Root>
+          <Container.Body>
+            <Button onClick={handleGetTrackByArtist}>Retornar Tracks</Button>
+          </Container.Body>
+        </Container.Root>
+
+        <Container.Root>
+          <Container.Body>
+            <Button onClick={onOpenChange}>Upload Track</Button>
+          </Container.Body>
+        </Container.Root>
       </div>
 
       <div className="top_sections flex">
@@ -176,25 +219,27 @@ export function Home() {
                   trackName="TrackName"
                   imageUrl="https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long"
                 />
+                {allData.map((item, index) => (
+                  <Container.Root key={index}>
+                    <Container.Body>
+                      <Player.Root>
+                        <Player.Body>
+                          <Player.Image
+                            width={50}
+                            shadow="md"
+                            artistName="Artist Name"
+                            imageUrl="https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long"
+                            trackName="Track Name"
+                          />
+                        </Player.Body>
+                      </Player.Root>
+                    </Container.Body>
+                  </Container.Root>
+                ))}
               </Player.Body>
             </Player.Root>
           </Container.Body>
         </Container.Root>
-
-        {/* <div className="top_sections flex">
-        <Container.Root className="section musics">
-          <Container.Header title="Top Músicas" />
-          <Container.Body>
-            {allData.map((item, index) => (
-              <div className="item" key={item.id}>
-                <Card.Root>
-                  <Card.Track image={item.image} />
-                  <Card.Description text="Descrição" />
-                </Card.Root>
-              </div>
-            ))}
-          </Container.Body>
-        </Container.Root> */}
 
         <Container.Root className="section artists">
           <Container.Header title="Top Artistas" />

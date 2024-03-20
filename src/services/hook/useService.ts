@@ -1,5 +1,5 @@
-import { AxiosPromise, AxiosRequestConfig } from 'axios';
-import api from '../api';
+import { AxiosPromise } from 'axios';
+import api from '../axiosConfig';
 
 export function useService() {
   function get(url: string, data: any, query: string): AxiosPromise {

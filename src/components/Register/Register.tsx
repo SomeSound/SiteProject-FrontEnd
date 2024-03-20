@@ -5,11 +5,11 @@ export const Register = () => {
   return (
     <>
       <form action="">
-        <div className="login-input">
+        <div className="register-input">
           <Input type="email" placeholder="Email" />
         </div>
 
-        <div className="login-input">
+        <div className="register-input">
           <Input type="password" placeholder="Password" />
         </div>
       </form>

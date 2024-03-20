@@ -1,11 +1,9 @@
 import { useState } from 'react';
+import { Register } from '../Register/Register';
+import { Modal } from '../Modal';
+import { Avatar, Input, Link, useDisclosure } from '@nextui-org/react';
 
 import './styles.scss';
-import { Login } from '../Login/Login';
-import { Modal } from '../Modal';
-import { Modal as ModalRoot } from '@nextui-org/react';
-
-import { Avatar, Input, Link, useDisclosure } from '@nextui-org/react';
 
 export const Navbar = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -14,9 +12,9 @@ export const Navbar = () => {
   return (
     <>
       <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
-        <Modal.Header text="Entrar" />
+        <Modal.Header text="Entrar/Cadastrar" />
         <Modal.Body rememberPass forgotPass>
-          <Login />
+          <Register />
         </Modal.Body>
         <Modal.Footer>
           <Modal.SignInButton />
@@ -66,9 +64,11 @@ export const Navbar = () => {
           {isLogged ? (
             <Avatar src="/profile" />
           ) : (
-            <Link onPress={onOpen} color="foreground">
-              Entrar / Cadastrar
-            </Link>
+            <>
+              <Link onPress={onOpen} color="foreground" className="">
+                Cadastrar
+              </Link>
+            </>
           )}
         </div>
       </div>
