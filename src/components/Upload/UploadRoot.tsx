@@ -1,3 +1,4 @@
+import { FormEvent } from 'react';
 import './styles.scss';
 
 interface UploadRootProps {

@@ -1,76 +1,17 @@
-import { useDisclosure } from '@nextui-org/react';
+import { Input, useDisclosure } from '@nextui-org/react';
 import { Banner } from '../components/Banner/Banner';
 import { Card } from '../components/Card/Card';
 import { CardCarouselTrack } from '../components/Card/CardCarouselTrack';
 import { Container } from '../components/Container';
 import { Player } from '../components/Player';
 import { Button } from '../components/shadcn/button';
-import { getAllTracks as getAllTracks } from '../services/track';
+import { getAllTracks as getAllTracks, saveTracks } from '../services/track';
+import { Modal } from '../components/Modal';
+import { Upload } from '../components/Upload';
+import { useForm } from 'react-hook-form';
+import { TrackDTO } from '../services/track/types';
 
 import './styles.scss';
-import { Modal } from '../components/Modal';
-import { UploadRoot } from '../components/Upload/UploadRoot';
-import { Upload } from '../components/Upload';
-
-const sections = ['Techno', 'Hard', 'Acid', 'Rave', 'Prytrance', 'DarkPsy'];
-const artists = [
-  'ARTIST 1',
-  'ARTIST 2',
-  'ARTIST 3',
-  'ARTIST 4',
-  'ARTIST 5',
-  'ARTIST 6',
-  'ARTIST 7',
-  'ARTIST 8',
-  'ARTIST 9',
-  'ARTIST 10',
-];
-
-const albums = [
-  'ALBUM 1',
-  'ALBUM 2',
-  'ALBUM 3',
-  'ALBUM 4',
-  'ALBUM 5',
-  'ALBUM 6',
-  'ALBUM 7',
-  'ALBUM 8',
-  'ALBUM 9',
-  'ALBUM 10',
-];
-
-const records = [
-  'RECORD 1',
-  'RECORD 2',
-  'RECORD 3',
-  'RECORD 4',
-  'RECORD 5',
-  'RECORD 6',
-  'RECORD 7',
-  'RECORD 8',
-  'RECORD 9',
-  'RECORD 10',
-];
-
-const history = [
-  'HISTORY 1',
-  'HISTORY 2',
-  'HISTORY 3',
-  'HISTORY 4',
-  'HISTORY 5',
-  'HISTORY 6',
-  'HISTORY 7',
-];
-
-const recommendations = [
-  'RECOMMENDATION 1',
-  'RECOMMENDATION 2',
-  'RECOMMENDATION 3',
-  'RECOMMENDATION 4',
-  'RECOMMENDATION 5',
-  'RECOMMENDATION 6',
-  'RECOMMENDATION 7',
-];
 
 const images = [
   {
@@ -163,32 +104,65 @@ const allData = [
   },
 ];
 
-async function handleGetTrackByArtist() {
-  try {
-    const response = await getAllTracks();
-    console.log(response);
-  } catch (error) {
-    console.log('Error get Tracks', error);
-  }
-}
+export const Home = () => {
+  const { isOpen, onOpenChange, onClose } = useDisclosure();
+  const { register, handleSubmit } = useForm();
 
-export function Home() {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  async function handleGetTrackByArtist() {
+    try {
+      const response = await getAllTracks();
+      console.log(response);
+    } catch (error) {
+      console.log('Error get Tracks', error);
+    }
+  }
+
+  async function handleSaveTrack(data: TrackDTO) {
+    try {
+      const response = await saveTracks('1', data);
+      console.log(response);
+    } catch (error) {
+      console.log('Error save Tracks', error);
+    }
+  }
 
   return (
     <div className="home">
       <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
         <Modal.Header text="Upload Track" />
-        <Modal.Body rememberPass forgotPass>
-          <Upload.Root>
-            <Upload.Input />
-            <Upload.Dropzone />
-            <Upload.List />
-          </Upload.Root>
-        </Modal.Body>
-        <Modal.Footer>
-          <Modal.SignInButton />
-        </Modal.Footer>
+
+        <form onSubmit={handleSubmit(handleSaveTrack)}>
+          <Modal.Body rememberPass forgotPass>
+            <div>
+              <Input {...register('name')} type="text" placeholder="Name" />
+              <Input
+                {...register('duration')}
+                type="text"
+                placeholder="Duration"
+              />
+              <Input {...register('genre')} type="text" placeholder="Genre" />
+              <Input {...register('image')} type="text" placeholder="Image" />
+            </div>
+
+            <Upload.Root>
+              <div>
+                <input type="file" {...register('file')} />
+              </div>
+              <div>
+                <Upload.List />
+              </div>
+            </Upload.Root>
+          </Modal.Body>
+          <Modal.Footer>
+            <Modal.Button
+              color="success"
+              variant="flat"
+              text="Enviar"
+              type="submit"
+              onClick={() => onClose}
+            />
+          </Modal.Footer>
+        </form>
       </Modal.Root>
 
       <div className="banner">
@@ -305,4 +279,4 @@ export function Home() {
       </Container.Root>
     </div>
   );
-}
+};

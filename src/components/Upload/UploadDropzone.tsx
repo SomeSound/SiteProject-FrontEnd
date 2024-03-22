@@ -1,7 +1,10 @@
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { UseFormProps } from 'react-hook-form';
 
-export const UploadDropzone = () => {
+interface UploadDropzoneProps extends UseFormProps {}
+
+export const UploadDropzone = ({}: UploadDropzoneProps) => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const onDrop = useCallback((acceptedFiles: any) => {
@@ -41,13 +44,11 @@ export const UploadDropzone = () => {
         <ul>
           {uploadedFiles.map((item, index) => (
             <li key={index}>
-              {item.file.name} -{' '}
+              {item.file.name} - {<br />}
               {item.loaded ? 'Carregado' : 'Aguardando carregamento'}
-              {item.loaded && (
-                <button onClick={() => onUploadComplete(index)}>
-                  Marcar como carregado
-                </button>
-              )}
+              <button onClick={() => onUploadComplete(index)}>
+                Marcar como carregado
+              </button>
             </li>
           ))}
         </ul>

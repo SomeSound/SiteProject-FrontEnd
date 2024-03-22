@@ -17,7 +17,12 @@ export const Navbar = () => {
           <Register />
         </Modal.Body>
         <Modal.Footer>
-          <Modal.SignInButton />
+          <Modal.Button
+            color="primary"
+            variant="flat"
+            text="Entrar"
+            type="submit"
+          />
         </Modal.Footer>
       </Modal.Root>
 

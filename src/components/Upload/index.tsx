@@ -1,11 +1,9 @@
-import { UploadDropzone } from './UploadDropZone';
-import { UploadInput } from './UploadInput';
+import { UploadDropzone } from './UploadDropzone';
 import { UploadList } from './UploadList';
 import { UploadRoot } from './UploadRoot';
 
 export const Upload = {
   Root: UploadRoot,
   Dropzone: UploadDropzone,
-  Input: UploadInput,
   List: UploadList,
 };
