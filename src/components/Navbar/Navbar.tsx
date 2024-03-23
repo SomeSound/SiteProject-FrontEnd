@@ -4,13 +4,66 @@ import { Modal } from '../Modal';
 import { Avatar, Input, Link, useDisclosure } from '@nextui-org/react';
 
 import './styles.scss';
+import { useForm } from 'react-hook-form';
+import { TrackDTO } from '../../services/track/types';
+import { saveTracks } from '../../services/track';
+import { Upload } from '../Upload';
+import { Container } from '../Container';
+import { Button } from '../shadcn/button';
 
 export const Navbar = () => {
   const [isLogged, setIsLogged] = useState(false);
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+  const { register, handleSubmit } = useForm();
+
+  async function handleSaveTrack(data: TrackDTO) {
+    try {
+      const response = await saveTracks('1', data);
+      console.log(response);
+    } catch (error) {
+      console.log('Error save Tracks', error);
+    }
+  }
 
   return (
     <>
+      <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
+        <Modal.Header text="Upload Track" />
+
+        <form onSubmit={handleSubmit(handleSaveTrack)}>
+          <Modal.Body rememberPass forgotPass>
+            <div>
+              <Input {...register('name')} type="text" placeholder="Name" />
+              <Input
+                {...register('duration')}
+                type="text"
+                placeholder="Duration"
+              />
+              <Input {...register('genre')} type="text" placeholder="Genre" />
+              <Input {...register('image')} type="text" placeholder="Image" />
+            </div>
+
+            <Upload.Root>
+              <div>
+                <input type="file" {...register('file')} />
+              </div>
+              <div>
+                <Upload.List />
+              </div>
+            </Upload.Root>
+          </Modal.Body>
+          <Modal.Footer>
+            <Modal.Button
+              color="success"
+              variant="flat"
+              text="Enviar"
+              type="submit"
+              onClick={() => onClose}
+            />
+          </Modal.Footer>
+        </form>
+      </Modal.Root>
+
       <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
         <Modal.Header text="Entrar/Cadastrar" />
         <Modal.Body rememberPass forgotPass>
@@ -64,6 +117,13 @@ export const Navbar = () => {
             }}
             placeholder="artistas, músicas, álbums..."
           ></Input>
+        </div>
+        <div className="flex">
+          <Container.Root>
+            <Container.Body>
+              <Button onClick={onOpenChange}>Upload Track</Button>
+            </Container.Body>
+          </Container.Root>
         </div>
         <div className="div-nav-avatar">
           {isLogged ? (
