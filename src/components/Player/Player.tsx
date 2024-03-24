@@ -1,9 +1,7 @@
 import { useStore } from '../../store/useStore';
 import { Player as PlayerComponent } from '.';
-import { getFileTrackById } from '../../services/track';
 import { useEffect, useState } from 'react';
 import './styles.scss';
-import { TrackDTO } from '../../services/track/types';
 
 export const Player = () => {
   const { playTrack, setPlayTrack } = useStore();
@@ -13,29 +11,10 @@ export const Player = () => {
     setIsPlaying(!isPlaying);
   };
 
-  // async function getFirstTrackToPlay() {
-  //   try {
-  //     const response = await getFileTrackById(1);
-
-  //     const data: TrackDTO = {
-  //       artist: track.data.artist,
-  //       duration: track.data.duration,
-  //       genre: track.data.genre,
-  //       image: track.data.image,
-  //       name: track.data.name,
-  //       path: url.data,
-  //     };
-
-  //     setPlayTrack(response.data);
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.log('Error play Track', error);
-  //   }
-  // }
-
-  useEffect(() => {
-    // getFirstTrackToPlay();
-  }, []);
+  //PLAY NA TRACK ASSIM QUE CARREGAR - ESTÁ COM MUITO DELAY
+  // useEffect(() => {
+  //   setIsPlaying(true);
+  // }, [playTrack]);
 
   return (
     <>
@@ -45,11 +24,15 @@ export const Player = () => {
             <div className="flex">
               <PlayerComponent.Image
                 className="track_image"
-                artistName="Artist Name"
+                artistName={playTrack === null ? '' : playTrack.artist.username}
                 imageUrl="https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long"
-                trackName="Track Name"
+                trackName={playTrack === null ? '' : playTrack.name}
               />
-              <PlayerComponent.HeartButton />
+              {playTrack !== null ? (
+                <PlayerComponent.HeartButton />
+              ) : (
+                'Selecione uma track'
+              )}
 
               <div className="w-full">
                 <div className="flex flex-col">

@@ -56,7 +56,11 @@ export const Home = () => {
       const track = await getTrackById(id);
 
       const data: TrackDTO = {
-        artist: track.data.artist,
+        artist: {
+          id: track.data.artist.id,
+          username: track.data.artist.username,
+          credits: track.data.artist.credits,
+        },
         duration: track.data.duration,
         genre: track.data.genre,
         image: track.data.image,
@@ -81,7 +85,7 @@ export const Home = () => {
       </div>
 
       <div className="top_sections flex">
-        <Container.Root className="section musics">
+        {/* <Container.Root className="section musics">
           <Container.Body>
             <Player.Root>
               <Player.Body>
@@ -115,7 +119,7 @@ export const Home = () => {
               </Player.Body>
             </Player.Root>
           </Container.Body>
-        </Container.Root>
+        </Container.Root> */}
 
         <Container.Root className="section artists">
           <Container.Header title="Top Artistas" />
@@ -131,7 +135,7 @@ export const Home = () => {
                       />
                       <Card.Description text={item.name} />
                       <Button onClick={() => playTrackById(item.id)}>
-                        Play track
+                        Selecionar Track
                       </Button>
                     </Card.Root>
                   </div>
@@ -150,7 +154,7 @@ export const Home = () => {
         </Container.Body>
       </Container.Root> */}
 
-      <div className="top_sections flex">
+      {/* <div className="top_sections flex">
         <Container.Root className="section albums">
           <Container.Header title="Top Albums" />
           <Container.Body>
@@ -196,7 +200,7 @@ export const Home = () => {
               : 'lala'}
           </Container.Body>
         </Container.Root>
-      </div>
+      </div> */}
 
       {/* <Container.Root className="history">
         <Container.Header title="Histórico" />
