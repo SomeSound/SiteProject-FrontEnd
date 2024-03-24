@@ -37,6 +37,7 @@
     "label": "^0.2.2",
     "lucide-react": "^0.315.0",
     "nginx": "^1.0.8",
+    "react-audio-waveform": "^0.0.5",
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.50.1",
     "react-refresh": "^0.14.0",
@@ -46,7 +47,9 @@
     "styled-components": "^6.1.8",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.22.4"
+    "wavesurfer.js": "^7.7.5",
+    "zod": "^3.22.4",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",

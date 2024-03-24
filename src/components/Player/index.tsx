@@ -1,4 +1,5 @@
 import { PlayerBody } from './PlayerBody';
+import { PlayerForm } from './PlayerForm';
 import { PlayerHeartButton } from './PlayerHeartButton';
 import { PlayerImage } from './PlayerImage';
 import { PlayerNextButton } from './PlayerNextButton';
@@ -20,4 +21,5 @@ export const Player = {
   RepeatButton: PlayerRepeatButton,
   ShuffleButton: PlayerShuffleButton,
   HeartButton: PlayerHeartButton,
+  Form: PlayerForm,
 };

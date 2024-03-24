@@ -1,18 +1,18 @@
-import { Input, useDisclosure } from '@nextui-org/react';
 import { Banner } from '../components/Banner/Banner';
 import { Card } from '../components/Card/Card';
-import { CardCarouselTrack } from '../components/Card/CardCarouselTrack';
 import { Container } from '../components/Container';
 import { Player } from '../components/Player';
+import {
+  getAllTracks as getAllTracks,
+  getFileTrackById,
+  getTrackById,
+} from '../services/track';
+import { useEffect, useState } from 'react';
 import { Button } from '../components/shadcn/button';
-import { getAllTracks as getAllTracks, saveTracks } from '../services/track';
-import { Modal } from '../components/Modal';
-import { Upload } from '../components/Upload';
-import { useForm } from 'react-hook-form';
-import { TrackDTO } from '../services/track/types';
+import { useStore } from '../store/useStore';
 
 import './styles.scss';
-import { useEffect, useState } from 'react';
+import { TrackDTO } from '../services/track/types';
 
 const banner = [
   {
@@ -38,16 +38,35 @@ const banner = [
 ];
 
 export const Home = () => {
-  const { isOpen, onOpenChange, onClose } = useDisclosure();
+  const { setPlayTrack } = useStore();
   const [tracks, setTracks] = useState(null);
 
   async function handleGetAllTrack() {
     try {
       const response = await getAllTracks();
-      setTracks(response.data.musicDataList);
-      console.log(response.data.musicDataList);
+      setTracks(response.data.content);
     } catch (error) {
       console.log('Error get Tracks', error);
+    }
+  }
+
+  async function playTrackById(id: number) {
+    try {
+      const url = await getFileTrackById(id);
+      const track = await getTrackById(id);
+
+      const data: TrackDTO = {
+        artist: track.data.artist,
+        duration: track.data.duration,
+        genre: track.data.genre,
+        image: track.data.image,
+        name: track.data.name,
+        path: url.data,
+      };
+
+      setPlayTrack(data);
+    } catch (error) {
+      console.log('Error play Track', error);
     }
   }
 
@@ -84,6 +103,9 @@ export const Home = () => {
                                 imageUrl="https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long"
                                 trackName={item.name}
                               />
+                              <Button onClick={() => playTrackById(item.id)}>
+                                Play track
+                              </Button>
                             </Player.Body>
                           </Player.Root>
                         </Container.Body>
@@ -108,6 +130,9 @@ export const Home = () => {
                         }
                       />
                       <Card.Description text={item.name} />
+                      <Button onClick={() => playTrackById(item.id)}>
+                        Play track
+                      </Button>
                     </Card.Root>
                   </div>
                 ))
@@ -139,6 +164,9 @@ export const Home = () => {
                         }
                       />
                       <Card.Description text={item.name} />
+                      <Button onClick={() => playTrackById(item.id)}>
+                        Play track
+                      </Button>
                     </Card.Root>
                   </div>
                 ))
@@ -159,6 +187,9 @@ export const Home = () => {
                         }
                       />
                       <Card.Description text={item.name} />
+                      <Button onClick={() => playTrackById(item.id)}>
+                        Play track
+                      </Button>
                     </Card.Root>
                   </div>
                 ))

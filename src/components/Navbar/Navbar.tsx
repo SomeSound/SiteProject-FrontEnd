@@ -19,7 +19,6 @@ export const Navbar = () => {
   async function handleSaveTrack(data: TrackDTO) {
     try {
       const response = await saveTracks('1', data);
-      console.log(response);
     } catch (error) {
       console.log('Error save Tracks', error);
     }
@@ -64,7 +63,7 @@ export const Navbar = () => {
         </form>
       </Modal.Root>
 
-      <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
+      {/* <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
         <Modal.Header text="Entrar/Cadastrar" />
         <Modal.Body rememberPass forgotPass>
           <Register />
@@ -77,7 +76,7 @@ export const Navbar = () => {
             type="submit"
           />
         </Modal.Footer>
-      </Modal.Root>
+      </Modal.Root> */}
 
       <div className="div-navbar-root">
         <div className="div-nav-logo">
@@ -126,7 +125,7 @@ export const Navbar = () => {
           </Container.Root>
         </div>
         <div className="div-nav-avatar">
-          {isLogged ? (
+          {/* {isLogged ? (
             <Avatar src="/profile" />
           ) : (
             <>
@@ -134,7 +133,7 @@ export const Navbar = () => {
                 Cadastrar
               </Link>
             </>
-          )}
+          )} */}
         </div>
       </div>
     </>

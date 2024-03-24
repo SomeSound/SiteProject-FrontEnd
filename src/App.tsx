@@ -3,10 +3,11 @@ import { BrowserRouter } from 'react-router-dom';
 import { AppRoutes } from './routes/router';
 import { Navbar } from './components/Navbar/Navbar';
 import { Sidebar } from './components/Sidebar/Sidebar';
-import { PlayerFixedComponent } from './components/Player/PlayerFixedComponent';
+import { Player } from './components/Player/Player';
 
 import './output.scss';
 import './styles.scss';
+import { useState } from 'react';
 
 export const App = () => {
   return (
@@ -18,7 +19,7 @@ export const App = () => {
           <AppRoutes />
         </Sidebar>
 
-        <PlayerFixedComponent />
+        <Player />
       </NextUIProvider>
     </BrowserRouter>
   );

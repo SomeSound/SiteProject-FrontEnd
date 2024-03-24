@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import { Button } from '@nextui-org/react';
-
-import './styles.scss';
 import { HeartIcon } from '../Icons/HeartIcon';
 
-export const PlayerHeartButton = () => {
+import './styles.scss';
+
+interface PlayerHeartButtonProps extends HTMLAttributes<HTMLButtonElement> {}
+
+export const PlayerHeartButton = ({}: PlayerHeartButtonProps) => {
   const [liked, setLiked] = React.useState(false);
 
   return (

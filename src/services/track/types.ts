@@ -3,5 +3,6 @@ export type TrackDTO = {
   duration: string;
   image: string;
   genre: string;
-  file: AudioBuffer;
+  artist: string;
+  path: string;
 };
