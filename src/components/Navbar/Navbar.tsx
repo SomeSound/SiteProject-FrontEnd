@@ -10,6 +10,7 @@ import { saveTracks } from '../../services/track';
 import { Upload } from '../Upload';
 import { Container } from '../Container';
 import { Button } from '../shadcn/button';
+import { NavLink } from 'react-router-dom';
 
 export const Navbar = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -26,7 +27,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
+      {/* <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
         <Modal.Header text="Upload Track" />
 
         <form onSubmit={handleSubmit(handleSaveTrack)}>
@@ -61,11 +62,16 @@ export const Navbar = () => {
             />
           </Modal.Footer>
         </form>
-      </Modal.Root>
+      </Modal.Root> */}
 
-      {/* <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
-        <Modal.Header text="Entrar/Cadastrar" />
+      <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
+        <Modal.Header text="Login" />
         <Modal.Body rememberPass forgotPass>
+          <div>
+            <NavLink to={'/register'} onClick={onClose}>
+              Cadastrar
+            </NavLink>
+          </div>
           <Register />
         </Modal.Body>
         <Modal.Footer>
@@ -76,29 +82,21 @@ export const Navbar = () => {
             type="submit"
           />
         </Modal.Footer>
-      </Modal.Root> */}
+      </Modal.Root>
 
       <div className="div-navbar-root">
         <div className="div-nav-logo">
-          <Link href="/" color="foreground">
-            Logo Here
-          </Link>
+          <NavLink to={'/'}>Logo</NavLink>
         </div>
         <div className="div-navbar-items flex">
           <div className="div-nav-item">
-            <Link href="/" color="foreground">
-              Gêneros
-            </Link>
+            <NavLink to={'/'}>Gêneros</NavLink>
           </div>
           <div className="div-nav-item">
-            <Link href="/" color="foreground">
-              Músicas
-            </Link>
+            <NavLink to={'/'}>Músicas</NavLink>
           </div>
           <div className="div-nav-item">
-            <Link href="/" color="foreground">
-              Artistas
-            </Link>
+            <NavLink to={'/'}>Artistas</NavLink>
           </div>
         </div>
         <div className="div-nav-search">
@@ -118,22 +116,22 @@ export const Navbar = () => {
           ></Input>
         </div>
         <div className="flex">
-          <Container.Root>
+          {/* <Container.Root>
             <Container.Body>
               <Button onClick={onOpenChange}>Upload Track</Button>
             </Container.Body>
-          </Container.Root>
+          </Container.Root> */}
         </div>
         <div className="div-nav-avatar">
-          {/* {isLogged ? (
+          {isLogged ? (
             <Avatar src="/profile" />
           ) : (
             <>
-              <Link onPress={onOpen} color="foreground" className="">
-                Cadastrar
+              <Link onPress={onOpen} color="foreground">
+                Login
               </Link>
             </>
-          )} */}
+          )}
         </div>
       </div>
     </>

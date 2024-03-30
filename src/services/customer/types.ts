@@ -1,9 +1,10 @@
 export type CustomerDTO = {
   name: string;
-  customerId: '12345678910';
-  email: 'gustavottonin@hotmail.com';
-  password: 'pass123';
-  country: 'Brasil';
-  birthDate: '21/12/2000';
-  subscription: 1;
+  email: string;
+  password: string;
+  country: string;
+  birthDate: string;
+  subscription: number;
+  avatar: string;
+  role: string;
 };

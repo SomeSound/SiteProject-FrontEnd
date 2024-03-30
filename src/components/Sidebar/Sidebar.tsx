@@ -1,11 +1,7 @@
 import { Listbox, ListboxItem } from '@nextui-org/react';
 import './styles.scss';
 
-interface SidebarProps {
-  children: React.ReactNode;
-}
-
-export const Sidebar = ({ children }: SidebarProps) => {
+export const Sidebar = () => {
   return (
     <div className="flex">
       <div className="sidebar">
@@ -15,8 +11,6 @@ export const Sidebar = ({ children }: SidebarProps) => {
           <ListboxItem key="likes">Curtidas</ListboxItem>
         </Listbox>
       </div>
-
-      {children}
     </div>
   );
 };

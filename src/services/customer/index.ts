@@ -7,5 +7,5 @@ export const createCustomer = (
 ): AxiosPromise<CustomerDTO> => {
   const { post } = useService();
 
-  return post(`/customer`, customerData);
+  return post(`/customer/register`, customerData);
 };
