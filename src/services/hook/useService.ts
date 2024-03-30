@@ -10,7 +10,7 @@ export function useService() {
 
   function post(url: string, data: any): AxiosPromise {
     return api.post(`${url}`, data, {
-      headers: { 'Content-Type': 'multipart/form-data' },
+      headers: {},
     });
   }
 

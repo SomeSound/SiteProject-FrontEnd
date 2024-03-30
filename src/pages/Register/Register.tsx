@@ -9,12 +9,6 @@ export const Register = () => {
 
   async function handleRegisterCustomer(data: CustomerDTO) {
     try {
-      data.name = 'Admin';
-      data.email = 'testeeeee@testeeeeeee.com';
-      data.password = 'admin';
-      data.country = 'Brasil';
-      data.avatar = 'avatarURL';
-      data.birthDate = 'birth';
       data.role = 'ADMIN';
       data.subscription = 1;
       console.log(data);
@@ -29,11 +23,17 @@ export const Register = () => {
     <div className="registerCustomer">
       <form onSubmit={handleSubmit(handleRegisterCustomer)}>
         <div>
+          <p>name</p>
           <Input {...register('name')} type="text" placeholder="Name" />
+          <p>email</p>
           <Input {...register('email')} type="text" placeholder="email" />
+          <p>password</p>
           <Input {...register('password')} type="text" placeholder="password" />
+          <p>country</p>
           <Input {...register('country')} type="text" placeholder="country" />
+          <p>avatar</p>
           <Input {...register('avatar')} type="text" placeholder="avatar" />
+          <p>birthDate</p>
           <Input
             {...register('birthDate')}
             type="text"

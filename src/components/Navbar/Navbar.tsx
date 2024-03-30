@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Register } from '../Register/Register';
 import { Modal } from '../Modal';
 import { Avatar, Input, Link, useDisclosure } from '@nextui-org/react';
 
@@ -72,7 +71,7 @@ export const Navbar = () => {
               Cadastrar
             </NavLink>
           </div>
-          <Register />
+          {/* <Register /> LOGIN */}
         </Modal.Body>
         <Modal.Footer>
           <Modal.Button
