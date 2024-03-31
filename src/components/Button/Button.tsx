@@ -1,7 +1,7 @@
 import { Button, ModalProps } from '@nextui-org/react';
 import { HTMLAttributes } from 'react';
 
-interface ModalRootProps extends HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   color: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
   variant:
     | 'shadow'
@@ -15,7 +15,12 @@ interface ModalRootProps extends HTMLAttributes<HTMLButtonElement> {
   type: 'button' | 'submit' | 'reset';
 }
 
-export const ModalButton = ({ color, variant, text, type }: ModalRootProps) => {
+export const ButtonComponent = ({
+  color,
+  variant,
+  text,
+  type,
+}: ButtonProps) => {
   return (
     <Button color={color} variant={variant} type={type}>
       {text}

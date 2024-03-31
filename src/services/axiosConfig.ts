@@ -9,10 +9,10 @@ import { translateMessage } from '../utils/errorMessages';
 
 const api = axios.create({
   baseURL: 'http://44.213.164.140:8080', //TODO ENVs
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
-    // Authorization:
-    //   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJIeXBlciIsInN1YiI6ImFydGlzdEBhZG1pbi5jb20iLCJleHAiOjE3MTE4NDc1OTR9.lIi66-9PK2ZcS6YYl0ptH5MCS6UxFG1Rslm33WD83gA',
+    Authorization: `Bearer ${sessionStorage.getItem('token')}`,
   },
 });
 

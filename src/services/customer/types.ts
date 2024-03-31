@@ -8,3 +8,9 @@ export type CustomerDTO = {
   avatar: string;
   role: string;
 };
+
+export type LoginDTO = {
+  email: string;
+  password: string;
+  token: string;
+};

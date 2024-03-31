@@ -3,17 +3,18 @@ import './styles.scss';
 import { useForm } from 'react-hook-form';
 import { CustomerDTO } from '../../services/customer/types';
 import { createCustomer } from '../../services/customer';
+import { useNavigate } from 'react-router-dom';
 
 export const Register = () => {
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
   async function handleRegisterCustomer(data: CustomerDTO) {
     try {
-      data.role = 'ADMIN';
+      data.role = 'CUSTOMER';
       data.subscription = 1;
-      console.log(data);
       const response = await createCustomer(data);
-      console.log(response);
+      return navigate('/');
     } catch (error) {
       console.log('Error create customer', error);
     }
@@ -39,6 +40,7 @@ export const Register = () => {
             type="text"
             placeholder="birthDate"
           />
+          <br />
           <Button type="submit">Cadastrar</Button>
         </div>
       </form>

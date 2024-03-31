@@ -38,6 +38,7 @@
     "lucide-react": "^0.315.0",
     "nginx": "^1.0.8",
     "react-audio-waveform": "^0.0.5",
+    "react-cookie": "^7.1.0",
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.50.1",
     "react-refresh": "^0.14.0",

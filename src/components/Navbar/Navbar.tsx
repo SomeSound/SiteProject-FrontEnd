@@ -1,19 +1,18 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { Modal } from '../Modal';
 import { Avatar, Input, Link, useDisclosure } from '@nextui-org/react';
-
-import './styles.scss';
 import { useForm } from 'react-hook-form';
 import { TrackDTO } from '../../services/track/types';
 import { saveTracks } from '../../services/track';
-import { Upload } from '../Upload';
-import { Container } from '../Container';
-import { Button } from '../shadcn/button';
 import { NavLink } from 'react-router-dom';
+import { Login } from '../Login/Login';
+import { AuthContext } from '../../context/AuthContext';
+
+import './styles.scss';
 
 export const Navbar = () => {
-  const [isLogged, setIsLogged] = useState(false);
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+  const { signed } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
 
   async function handleSaveTrack(data: TrackDTO) {
@@ -68,19 +67,12 @@ export const Navbar = () => {
         <Modal.Body rememberPass forgotPass>
           <div>
             <NavLink to={'/register'} onClick={onClose}>
-              Cadastrar
+              Clique aqui para cadastrar
             </NavLink>
           </div>
-          {/* <Register /> LOGIN */}
+          <Login onOpenChange={onOpenChange} />
         </Modal.Body>
-        <Modal.Footer>
-          <Modal.Button
-            color="primary"
-            variant="flat"
-            text="Entrar"
-            type="submit"
-          />
-        </Modal.Footer>
+        <Modal.Footer></Modal.Footer>
       </Modal.Root>
 
       <div className="div-navbar-root">
@@ -122,7 +114,7 @@ export const Navbar = () => {
           </Container.Root> */}
         </div>
         <div className="div-nav-avatar">
-          {isLogged ? (
+          {signed ? (
             <Avatar src="/profile" />
           ) : (
             <>
