@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { CustomerDTO } from '../../services/customer/types';
 import { createCustomer } from '../../services/customer';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Register = () => {
   const { register, handleSubmit } = useForm();
@@ -14,8 +16,10 @@ export const Register = () => {
       data.role = 'CUSTOMER';
       data.subscription = 1;
       const response = await createCustomer(data);
-      return navigate('/');
+      navigate('/');
+      toast.success('Seja bem vindo(a) a Hyper!!');
     } catch (error) {
+      toast.error('Usuário e/ou senha inválidos. Tente novamente.');
       console.log('Error create customer', error);
     }
   }

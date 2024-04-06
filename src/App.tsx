@@ -4,16 +4,11 @@ import { Navbar } from './components/Navbar/Navbar';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Player } from './components/Player/Player';
 import { AuthProvider } from './context/AuthContext';
-import { LoginDTO } from './services/customer/types';
+import { Bounce, ToastContainer } from 'react-toastify';
+import { CookiesProvider } from 'react-cookie';
 
 import './output.scss';
 import './styles.scss';
-
-const data: LoginDTO = {
-  email: 'lala',
-  password: 'lala',
-  token: 'lala',
-};
 
 export const App = () => {
   return (
@@ -25,6 +20,20 @@ export const App = () => {
           <Sidebar />
           <Outlet />
         </div>
+
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick={true}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Bounce}
+        />
 
         <Player />
       </NextUIProvider>

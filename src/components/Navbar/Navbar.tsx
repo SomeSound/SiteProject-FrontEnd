@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { Modal } from '../Modal';
-import { Avatar, Input, Link, useDisclosure } from '@nextui-org/react';
-import { useForm } from 'react-hook-form';
+import { Input, Link, User, useDisclosure } from '@nextui-org/react';
 import { TrackDTO } from '../../services/track/types';
 import { saveTracks } from '../../services/track';
 import { NavLink } from 'react-router-dom';
@@ -9,15 +8,15 @@ import { Login } from '../Login/Login';
 import { AuthContext } from '../../context/AuthContext';
 
 import './styles.scss';
+import { Avatar } from '../Avatar';
 
 export const Navbar = () => {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const { signed } = useContext(AuthContext);
-  const { register, handleSubmit } = useForm();
 
   async function handleSaveTrack(data: TrackDTO) {
     try {
-      const response = await saveTracks('1', data);
+      await saveTracks('1', data);
     } catch (error) {
       console.log('Error save Tracks', error);
     }
@@ -115,7 +114,9 @@ export const Navbar = () => {
         </div>
         <div className="div-nav-avatar">
           {signed ? (
-            <Avatar src="/profile" />
+            <Avatar.Root>
+              <Avatar.Dropdown />
+            </Avatar.Root>
           ) : (
             <>
               <Link onPress={onOpen} color="foreground">

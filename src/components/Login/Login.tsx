@@ -1,11 +1,12 @@
 import { Input } from '@nextui-org/react';
 import { useForm } from 'react-hook-form';
 import { LoginDTO } from '../../services/customer/types';
-import { ButtonComponent } from '../Button/Button';
+import { Button } from '../Button/Button';
 import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
 
 import './styles.scss';
+import { useNavigate } from 'react-router-dom';
 
 interface LoginProps {
   onOpenChange: (isOpen: boolean) => void;
@@ -14,13 +15,13 @@ interface LoginProps {
 export const Login = ({ onOpenChange }: LoginProps) => {
   const { signIn } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
   async function handleLogin(data: LoginDTO) {
     try {
-      console.log('lala');
       await signIn(data);
-      console.log('lala');
       onOpenChange(false);
+      navigate('/');
     } catch (error) {
       console.log('Error to logIn', error);
     }
@@ -32,12 +33,7 @@ export const Login = ({ onOpenChange }: LoginProps) => {
         <Input {...register('email')} type="text" placeholder="Email" />
         <Input {...register('password')} type="text" placeholder="Password" />
 
-        <ButtonComponent
-          color="success"
-          text="Entrar"
-          type="submit"
-          variant="solid"
-        />
+        <Button color="success" text="Entrar" type="submit" variant="solid" />
       </form>
     </>
   );

@@ -1,7 +1,7 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useEffect, useState } from 'react';
 import { logInCustomer } from '../services/customer';
 import { LoginDTO } from '../services/customer/types';
-import { useCookies } from 'react-cookie';
+import { Cookies, useCookies } from 'react-cookie';
 
 interface AuthContextProps {
   signed: boolean;
@@ -12,8 +12,8 @@ interface AuthContextProps {
 }
 
 interface UserProps {
-  // id: number;
-  // name: string;
+  id: number;
+  name: string;
   email: string;
 }
 
@@ -22,28 +22,48 @@ export const AuthContext = createContext<AuthContextProps>(
 );
 
 export const AuthProvider = ({ children }: any) => {
-  const [cookies, setCookie, removeCookie] = useCookies(null);
+  const [cookies, setCookie, removeCookie] = useCookies(['token', 'user']);
   const [user, setUser] = useState<UserProps | null>(null);
   const [signed, setSigned] = useState<boolean>(false);
 
   async function signIn(data: LoginDTO) {
-    console.log('lala2');
     const response = await logInCustomer(data);
+
     setCookie('token', response.data.token, {
       httpOnly: true,
+      path: '/',
     });
+
     setUser({
-      email: response.data.email,
+      id: 1,
+      name: 'User',
+      email: 'User@icloud.com', //response.data.email,
     });
+
+    setCookie('user', response.data.token, {
+      httpOnly: false,
+      path: '/',
+    });
+
     setSigned(true);
-    console.log(cookies);
+    console.log(cookies.user);
   }
 
   async function signOut() {
-    removeCookie;
+    removeCookie('token');
+    removeCookie('user');
     setUser(null);
     setSigned(false);
+    console.log(cookies.user);
   }
+
+  useEffect(() => {
+    if (cookies.user) {
+      console.log(cookies.user);
+
+      setSigned(true);
+    }
+  }, []);
 
   return (
     <AuthContext.Provider value={{ signed, user, signIn, signOut, children }}>

@@ -9,10 +9,9 @@ import { translateMessage } from '../utils/errorMessages';
 
 const api = axios.create({
   baseURL: 'http://44.213.164.140:8080', //TODO ENVs
-  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+    // Authorization: `Bearer ${sessionStorage.getItem('token')}`,
   },
 });
 

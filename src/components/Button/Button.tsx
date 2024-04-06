@@ -1,4 +1,4 @@
-import { Button, ModalProps } from '@nextui-org/react';
+import { Button as ButtonUi } from '@nextui-org/react';
 import { HTMLAttributes } from 'react';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
@@ -15,15 +15,10 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   type: 'button' | 'submit' | 'reset';
 }
 
-export const ButtonComponent = ({
-  color,
-  variant,
-  text,
-  type,
-}: ButtonProps) => {
+export const Button = ({ color, variant, text, type }: ButtonProps) => {
   return (
-    <Button color={color} variant={variant} type={type}>
+    <ButtonUi color={color} variant={variant} type={type}>
       {text}
-    </Button>
+    </ButtonUi>
   );
 };
