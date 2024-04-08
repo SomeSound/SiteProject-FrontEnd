@@ -1,8 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Home } from '../pages/Home';
-import { Landing } from '../pages/Landing/Landing';
-import { Register } from '../pages/Register/Register';
 import { App } from '../App';
+import { Home } from '../pages/Home/Home';
+import { Landing } from '../pages/Landing/Landing';
+import { RegisterCustomer } from '../pages/Register/RegisterCustomer';
+import { RegisterArtist } from '../pages/Register/RegisterArtist';
 
 export const Routes = createBrowserRouter([
   {
@@ -14,8 +15,12 @@ export const Routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/register',
-        element: <Register />,
+        path: '/customer',
+        element: <RegisterCustomer />,
+      },
+      {
+        path: '/artist',
+        element: <RegisterArtist />,
       },
     ],
   },

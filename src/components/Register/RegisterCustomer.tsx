@@ -1,13 +1,11 @@
 import { Button, Input } from '@nextui-org/react';
-import './styles.scss';
 import { useForm } from 'react-hook-form';
 import { CustomerDTO } from '../../services/customer/types';
 import { createCustomer } from '../../services/customer';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-export const Register = () => {
+export const RegisterCustomer = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 

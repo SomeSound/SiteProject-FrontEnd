@@ -65,7 +65,7 @@ export const Navbar = () => {
         <Modal.Header text="Login" />
         <Modal.Body rememberPass forgotPass>
           <div>
-            <NavLink to={'/register'} onClick={onClose}>
+            <NavLink to={'/customer'} onClick={onClose}>
               Clique aqui para cadastrar
             </NavLink>
           </div>

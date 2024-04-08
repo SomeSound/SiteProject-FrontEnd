@@ -22,7 +22,11 @@ export const AuthContext = createContext<AuthContextProps>(
 );
 
 export const AuthProvider = ({ children }: any) => {
-  const [cookies, setCookie, removeCookie] = useCookies(['token', 'user']);
+  const [cookies, setCookie, removeCookie] = useCookies([
+    'token',
+    'user',
+    'artist',
+  ]);
   const [user, setUser] = useState<UserProps | null>(null);
   const [signed, setSigned] = useState<boolean>(false);
 
@@ -46,7 +50,6 @@ export const AuthProvider = ({ children }: any) => {
     });
 
     setSigned(true);
-    console.log(cookies.user);
   }
 
   async function signOut() {
@@ -54,13 +57,10 @@ export const AuthProvider = ({ children }: any) => {
     removeCookie('user');
     setUser(null);
     setSigned(false);
-    console.log(cookies.user);
   }
 
   useEffect(() => {
     if (cookies.user) {
-      console.log(cookies.user);
-
       setSigned(true);
     }
   }, []);

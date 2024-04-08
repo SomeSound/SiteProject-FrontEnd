@@ -1,18 +1,18 @@
-import { Banner } from '../components/Banner/Banner';
-import { Card } from '../components/Card/Card';
-import { Container } from '../components/Container';
-import { Player } from '../components/Player';
+import { Banner } from '../../components/Banner/Banner';
+import { Card } from '../../components/Card/Card';
+import { Container } from '../../components/Container';
+import { Player } from '../../components/Player';
 import {
   getAllTracks as getAllTracks,
   getFileTrackById,
   getTrackById,
-} from '../services/track';
+} from '../../services/track';
 import { useEffect, useState } from 'react';
-import { Button } from '../components/shadcn/button';
-import { useStore } from '../store/useStore';
+import { Button } from '../../components/shadcn/button';
+import { useStore } from '../../store/useStore';
 
 import './styles.scss';
-import { TrackDTO } from '../services/track/types';
+import { TrackDTO } from '../../services/track/types';
 
 const banner = [
   {

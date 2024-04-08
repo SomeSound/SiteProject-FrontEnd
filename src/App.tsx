@@ -5,7 +5,7 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 import { Player } from './components/Player/Player';
 import { AuthProvider } from './context/AuthContext';
 import { Bounce, ToastContainer } from 'react-toastify';
-import { CookiesProvider } from 'react-cookie';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './output.scss';
 import './styles.scss';
