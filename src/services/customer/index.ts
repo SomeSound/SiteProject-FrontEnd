@@ -15,3 +15,11 @@ export const logInCustomer = (login: LoginDTO): AxiosPromise<LoginDTO> => {
 
   return post(`/customer/login`, login);
 };
+
+export const getCustomerByEmail = (
+  email: string,
+): AxiosPromise<CustomerDTO> => {
+  const { get } = useService();
+
+  return get(`/customer/${'teste'}`, '', '');
+};

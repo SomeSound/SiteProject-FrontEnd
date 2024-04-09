@@ -11,11 +11,10 @@ export const RegisterCustomer = () => {
 
   async function handleRegisterCustomer(data: CustomerDTO) {
     try {
-      data.role = 'CUSTOMER';
       data.subscription = 1;
       const response = await createCustomer(data);
       navigate('/');
-      toast.success('Seja bem vindo(a) a Hyper!!');
+      toast.success(`Seja bem vindo(a) a Hyper, ${response.data.name}!!`);
     } catch (error) {
       toast.error('Usuário e/ou senha inválidos. Tente novamente.');
       console.log('Error create customer', error);
