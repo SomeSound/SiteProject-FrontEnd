@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import { getCustomerByEmail, logInCustomer } from '../services/customer';
 import { CustomerDTO, LoginDTO } from '../services/customer/types';
-import { Cookies, useCookies } from 'react-cookie';
+import { useCookies } from 'react-cookie';
 
 interface AuthContextProps {
   signed: boolean;
@@ -30,20 +30,14 @@ export const AuthProvider = ({ children }: any) => {
     console.log(response.data.token.token);
 
     setCookie('token', response.data.token.token, {
-      maxAge: 60 * 60 * 1, // 1 hour
-      // httpOnly: true,
-      path: '/',
+      httpOnly: true,
     });
 
     const customer = await getCustomerByEmail(data.email);
     console.log(customer);
     setUser(customer.data);
 
-    // setCookie('user', customer.data.email, {
-    //   maxAge: 60 * 60 * 1,
-    //   httpOnly: false,
-    //   // path: '/',
-    // });
+    setCookie('user', cookies.token);
     setSigned(true);
   }
 
@@ -55,6 +49,8 @@ export const AuthProvider = ({ children }: any) => {
   }
 
   useEffect(() => {
+    console.log(cookies.token);
+
     console.log(cookies.user);
     if (cookies.user) {
       setSigned(true);

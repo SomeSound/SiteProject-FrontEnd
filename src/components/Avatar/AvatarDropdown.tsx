@@ -6,6 +6,7 @@ import {
   DropdownItem,
   Avatar,
   DropdownSection,
+  Button,
 } from '@nextui-org/react';
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
@@ -25,7 +26,8 @@ export function AvatarDropdown() {
     <div className="flex items-center gap-4">
       <Dropdown placement="bottom-end">
         <DropdownTrigger>
-          <Avatar isBordered color="default" as="button" />
+          <Button />
+          {/* <Avatar isBordered color="default"/> PRECISA SER ALTERADO, DA ERRO NO DOM*/}
         </DropdownTrigger>
         <DropdownMenu aria-label="Artist Actions" variant="flat">
           <DropdownSection aria-label="Profile Actions" showDivider>

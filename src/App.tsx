@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import './output.scss';
 import './styles.scss';
+import { CookiesProvider } from 'react-cookie';
 
 export const App = () => {
   return (

@@ -21,5 +21,5 @@ export const getCustomerByEmail = (
 ): AxiosPromise<CustomerDTO> => {
   const { get } = useService();
 
-  return get(`/customer/${'teste'}`, '', '');
+  return get(`/customer/${email}`, '', '');
 };
