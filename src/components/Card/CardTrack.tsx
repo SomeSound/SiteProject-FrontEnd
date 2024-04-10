@@ -8,10 +8,17 @@ interface cardTrackProps {
 
 export const CardTrack = ({ image }: cardTrackProps) => {
   return (
-    <Card className="border-none">
-      <CardContent className="flex aspect-square items-center justify-center">
-        <Image className="object-cover" height={100} width={100} src={image} />
-      </CardContent>
-    </Card>
+    <div className="card_track">
+      <Card className="border-none">
+        <CardContent className="flex aspect-square items-center justify-center">
+          <Image
+            className="object-cover"
+            height={100}
+            width={100}
+            src={image}
+          />
+        </CardContent>
+      </Card>
+    </div>
   );
 };

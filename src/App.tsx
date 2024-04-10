@@ -1,25 +1,43 @@
 import { NextUIProvider } from '@nextui-org/react';
-import { BrowserRouter } from 'react-router-dom';
-import { AppRoutes } from './routes/router';
+import { Outlet } from 'react-router-dom';
 import { Navbar } from './components/Navbar/Navbar';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Player } from './components/Player/Player';
+import { AuthProvider } from './context/AuthContext';
+import { Bounce, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './output.scss';
 import './styles.scss';
+import { CookiesProvider } from 'react-cookie';
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <AuthProvider>
       <NextUIProvider>
         <Navbar />
 
-        <Sidebar>
-          <AppRoutes />
-        </Sidebar>
+        <div className="flex">
+          <Sidebar />
+          <Outlet />
+        </div>
+
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick={true}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Bounce}
+        />
 
         <Player />
       </NextUIProvider>
-    </BrowserRouter>
+    </AuthProvider>
   );
 };

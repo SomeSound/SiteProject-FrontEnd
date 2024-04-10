@@ -1,4 +1,3 @@
-import React from 'react';
 export const RepeatOneIcon = ({
   size = 24,
   width = 24,

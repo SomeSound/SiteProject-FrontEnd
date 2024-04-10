@@ -8,7 +8,11 @@ import {
 import { translateMessage } from '../utils/errorMessages';
 
 const api = axios.create({
-  baseURL: 'localhost:8080', //TODO ENVs
+  baseURL: 'http://44.213.164.140:8080', //TODO ENVs
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
 api.interceptors.response.use(
