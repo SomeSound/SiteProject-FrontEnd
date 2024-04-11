@@ -6,14 +6,22 @@ import {
   ConflictException,
 } from '../exceptions';
 import { translateMessage } from '../utils/errorMessages';
+import { parseCookies } from 'nookies';
+
+const { token } = parseCookies();
 
 const api = axios.create({
   baseURL: 'http://44.213.164.140:8080', //TODO ENVs
   withCredentials: true,
   headers: {
+    Accept: 'application/json',
     'Content-Type': 'application/json',
   },
 });
+
+if (token) {
+  api.defaults.headers['Authorization'] = `Bearer ${token}`;
+}
 
 api.interceptors.response.use(
   (response) => {

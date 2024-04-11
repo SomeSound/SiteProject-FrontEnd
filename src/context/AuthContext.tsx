@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import { getCustomerByEmail, logInCustomer } from '../services/customer';
 import { CustomerDTO, LoginDTO } from '../services/customer/types';
-import { useCookies } from 'react-cookie';
+import { parseCookies, setCookie } from 'nookies';
 
 interface AuthContextProps {
   signed: boolean;
@@ -16,11 +16,6 @@ export const AuthContext = createContext<AuthContextProps>(
 );
 
 export const AuthProvider = ({ children }: any) => {
-  const [cookies, setCookie, removeCookie] = useCookies([
-    'token',
-    'user',
-    'artist',
-  ]);
   const [user, setUser] = useState<CustomerDTO | null>(null);
   const [signed, setSigned] = useState<boolean>(false);
 
@@ -29,30 +24,28 @@ export const AuthProvider = ({ children }: any) => {
 
     console.log(response.data.token.token);
 
-    setCookie('token', response.data.token.token, {
-      httpOnly: true,
+    setCookie(null, 'token', response.data.token.token, {
+      path: '/',
+      maxAge: 60 * 60 * 1, // 1 hour
     });
 
     const customer = await getCustomerByEmail(data.email);
-    console.log(customer);
     setUser(customer.data);
 
-    setCookie('user', cookies.token);
+    setCookie(null, 'user', customer.data.email);
     setSigned(true);
   }
 
   async function signOut() {
-    removeCookie('token');
-    removeCookie('user');
+    setCookie(null, 'token', null);
+    setCookie(null, 'user', null);
     setUser(null);
     setSigned(false);
   }
 
   useEffect(() => {
-    console.log(cookies.token);
-
-    console.log(cookies.user);
-    if (cookies.user) {
+    const { token } = parseCookies();
+    if (token) {
       setSigned(true);
     }
   }, []);
