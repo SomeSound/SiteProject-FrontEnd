@@ -26,7 +26,7 @@ export const RegisterCustomer = () => {
   return (
     <div className="register_customer_div">
       <form onSubmit={handleSubmit(handleRegisterCustomer)}>
-        <div className="flex input_login_div">
+        <div className="flex">
           <Input
             {...register('name')}
             type="text"
@@ -41,7 +41,7 @@ export const RegisterCustomer = () => {
           />
         </div>
 
-        <div className="input_register_div">
+        <div>
           <Input
             {...register('email')}
             type="text"
@@ -56,7 +56,7 @@ export const RegisterCustomer = () => {
           />
         </div>
 
-        <div className="flex input_register_div">
+        <div className="flex">
           <Input
             {...register('country')}
             type="text"

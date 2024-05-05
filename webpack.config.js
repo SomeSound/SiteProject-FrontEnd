@@ -1,15 +1,22 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const history = require('connect-history-api-fallback');
+
 module.exports = {
   mode: 'development',
   entry: './src/index.tsx',
   devtool: 'inline-source-map',
   output: {
-    path: path.join(__dirname, '/build'),
+    path: path.join(__dirname, 'build'),
     filename: 'bundle.js',
   },
   devServer: {
-    static: './build',
+    static: {
+      directory: path.resolve(__dirname, 'build'),
+    },
+    compress: true,
+    port: 3000,
+    historyApiFallback: true,
   },
   module: {
     rules: [

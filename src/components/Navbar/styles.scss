@@ -1,6 +1,6 @@
 @import './../../theme/theme.scss';
 
-.div-navbar-root {
+.div_navbar_root {
     top: 0;
     position: static;
     background-color: $primary-color;
@@ -11,7 +11,7 @@
     display: flex;
 }
 
-.div-nav-logo {
+.div_nav_logo {
   position: static;
   left: auto;
   margin: 5px;
@@ -19,27 +19,35 @@
   width: 10%;
 }
 
-.div-nav-items {
+.div_nav_items {
   align-items: center;
   margin: auto;
 }
 
-.div-nav-item {
+.div_nav_item {
   margin: 0px 25px 0px 25px;
   align-items: center;
   width: 10%;
 }
 
-.div-nav-search {
+.div_nav_search {
   align-items: center;
   margin: auto;
 }
 
-.div-nav-avatar {
+.div_nav_avatar {
   align-items: center;
   margin-left: auto;
 }
 
 .register_link {
   color: black;
+}
+
+.upload_button {
+  margin: 0rem 1rem 0rem 0rem;
+}
+
+.avatar_dropdown {
+  margin: 0rem 1rem 0rem 0rem;
 }

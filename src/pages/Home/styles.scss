@@ -11,20 +11,19 @@
 }
 
 .section {
-    width: 25%;
-    margin: 0.5rem;
+    width: 60%;
 
-    .musics {
-        margin-right: auto;
+    .track {
+        margin: 1rem;
+    }
+
+    .artist {
+        margin: 1rem;
     }
 }
 
 .top_sections {
     margin: 1rem;
-}
-
-.item {
-    margin: auto;
 }
 
 .item:hover {

@@ -4,6 +4,7 @@ import { Home } from '../pages/Home/Home';
 import { Landing } from '../pages/Landing/Landing';
 import { RegisterCustomer } from '../pages/Register/RegisterCustomer';
 import { RegisterArtist } from '../pages/Register/RegisterArtist';
+import { UploadTrack } from '../pages/UploadTrack/UploadTrack';
 
 export const Routes = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const Routes = createBrowserRouter([
       {
         path: '/artist',
         element: <RegisterArtist />,
+      },
+      {
+        path: '/upload',
+        element: <UploadTrack />,
       },
     ],
   },

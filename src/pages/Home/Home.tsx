@@ -95,34 +95,37 @@ export const Home = () => {
     <div className="home">
       <div className="flex">
         <Banner data={banner} />
-        <Container.Root className="section artists">
-          <Container.Header title="Top Artistas" />
-          <Container.Body>
-            {artists !== null
-              ? artists.artists.map((item: ArtistDTO) => (
-                  <div className="item" key={item.id}>
+
+        <div className="section">
+          <Container.Root>
+            <Container.Header title="Top Tracks" />
+            <Container.Body>
+              {artists !== null
+                ? tracks.tracks.map((item: TrackDTO) => (
                     <Card.Root>
-                      <Card.Artist
-                        name={item.username}
-                        image={
-                          'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long'
-                        }
-                      />
+                      <div className="track" key={item.id}>
+                        <Card.Artist
+                          name={item.name}
+                          image={
+                            'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long'
+                          }
+                        />
+                      </div>
                     </Card.Root>
-                  </div>
-                ))
-              : 'Erro ao retornar artistas'}
-          </Container.Body>
-        </Container.Root>
+                  ))
+                : 'Erro ao retornar artistas'}
+            </Container.Body>
+          </Container.Root>
+        </div>
       </div>
 
       <div className="top_sections flex">
-        <Container.Root className="section artists">
-          <Container.Header title="Top Tracks" />
+        <Container.Root className="section">
+          <Container.Header title="Novos Lançamentos" />
           <Container.Body>
             {tracks !== null
               ? tracks.tracks.map((item: TrackDTO) => (
-                  <div className="item" key={item.id}>
+                  <div className="track" key={item.id}>
                     <Card.Root>
                       <Card.Track
                         image={
@@ -139,6 +142,28 @@ export const Home = () => {
               : 'Erro ao retornar artistas'}
           </Container.Body>
         </Container.Root>
+
+        <div className="section">
+          <Container.Root>
+            <Container.Header title="Top Artistas" />
+            <Container.Body>
+              {artists !== null
+                ? artists.artists.map((item: ArtistDTO) => (
+                    <Card.Root>
+                      <div className="artist" key={item.id}>
+                        <Card.Artist
+                          name={item.username}
+                          image={
+                            'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long'
+                          }
+                        />
+                      </div>
+                    </Card.Root>
+                  ))
+                : 'Erro ao retornar artistas'}
+            </Container.Body>
+          </Container.Root>
+        </div>
       </div>
 
       {/* <Container.Root className="recommendations">
