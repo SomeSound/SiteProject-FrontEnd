@@ -1,7 +1,6 @@
 import { Banner } from '../../components/Banner/Banner';
 import { Card } from '../../components/Card/Card';
 import { Container } from '../../components/Container';
-import { Player } from '../../components/Player';
 import {
   getAllTracks as getAllTracks,
   getFileTrackById,
@@ -10,9 +9,10 @@ import {
 import { useEffect, useState } from 'react';
 import { Button } from '../../components/shadcn/button';
 import { useStore } from '../../store/useStore';
+import { TrackDTO } from '../../services/track/types';
+import { getArtists } from '../../services/artist';
 
 import './styles.scss';
-import { TrackDTO } from '../../services/track/types';
 
 const banner = [
   {
@@ -40,13 +40,23 @@ const banner = [
 export const Home = () => {
   const { setPlayTrack } = useStore();
   const [tracks, setTracks] = useState(null);
+  const [artists, setArtists] = useState(null);
 
   async function handleGetAllTrack() {
     try {
       const response = await getAllTracks();
       setTracks(response.data.content);
     } catch (error) {
-      console.log('Error get Tracks', error);
+      console.log('Error get tracks', error);
+    }
+  }
+
+  async function handleGetArtists() {
+    try {
+      const response = await getArtists();
+      setArtists(response.data);
+    } catch (error) {
+      console.log('Error get artists', error);
     }
   }
 
@@ -80,8 +90,32 @@ export const Home = () => {
 
   return (
     <div className="home">
-      <div className="banner">
-        <Banner data={banner} />
+      <div className="flex">
+        <div className="banner">
+          <Banner data={banner} />
+        </div>
+        <Container.Root className="section artists">
+          <Container.Header title="Top Artistas" />
+          <Container.Body>
+            {artists !== null
+              ? artists.map((item: any) => (
+                  <div className="item" key={item.id}>
+                    <Card.Root>
+                      <Card.Track
+                        image={
+                          'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long'
+                        }
+                      />
+                      <Card.Description text={item.name} />
+                      <Button onClick={() => playTrackById(item.id)}>
+                        Selecionar Track
+                      </Button>
+                    </Card.Root>
+                  </div>
+                ))
+              : 'Erro ao retornar artistas'}
+          </Container.Body>
+        </Container.Root>
       </div>
 
       <div className="top_sections flex">
@@ -106,49 +140,26 @@ export const Home = () => {
                                 artistName={item.name}
                                 imageUrl="https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long"
                                 trackName={item.name}
-                              />
-                              <Button onClick={() => playTrackById(item.id)}>
+                                />
+                                <Button onClick={() => playTrackById(item.id)}>
                                 Play track
-                              </Button>
-                            </Player.Body>
-                          </Player.Root>
-                        </Container.Body>
-                      </Container.Root>
-                    ))
+                                </Button>
+                                </Player.Body>
+                                </Player.Root>
+                                </Container.Body>
+                                </Container.Root>
+                              ))
                   : 'lala'}
               </Player.Body>
-            </Player.Root>
-          </Container.Body>
-        </Container.Root> */}
-
-        <Container.Root className="section artists">
-          <Container.Header title="Top Artistas" />
-          <Container.Body>
-            {tracks !== null
-              ? tracks.map((item: any) => (
-                  <div className="item" key={item.id}>
-                    <Card.Root>
-                      <Card.Track
-                        image={
-                          'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long'
-                        }
-                      />
-                      <Card.Description text={item.name} />
-                      <Button onClick={() => playTrackById(item.id)}>
-                        Selecionar Track
-                      </Button>
-                    </Card.Root>
-                  </div>
-                ))
-              : 'lala'}
-          </Container.Body>
-        </Container.Root>
+              </Player.Root>
+              </Container.Body>
+            </Container.Root> */}
       </div>
 
       {/* <Container.Root className="recommendations">
         <Container.Header title="Recomendações" />
         <Container.Body>
-          <div className="flex">
+        <div className="flex">
             {tracks !== null ? <CardCarouselTrack data={tracks} /> : 'lala'}
           </div>
         </Container.Body>

@@ -7,3 +7,9 @@ export const createArtist = (data: ArtistDTO): AxiosPromise<ArtistDTO> => {
 
   return post(`/artist`, data);
 };
+
+export const getArtists = (): AxiosPromise<ArtistDTO> => {
+  const { get } = useService();
+
+  return get(`/artist`, '', '');
+};
