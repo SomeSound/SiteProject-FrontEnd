@@ -1,7 +1,9 @@
+@import './../../theme/theme.scss';
+
 .div-navbar-root {
     top: 0;
     position: static;
-    background-color: rgb(236, 17, 17);
+    background-color: $primary-color;
     border-radius: 0rem 0rem 0.5rem 0rem;
     padding: 0.25rem 0.25rem;
     margin: auto;
@@ -36,4 +38,8 @@
 .div-nav-avatar {
   align-items: center;
   margin-left: auto;
+}
+
+.register_link {
+  color: black;
 }

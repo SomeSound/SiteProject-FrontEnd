@@ -4,9 +4,8 @@
   "scripts": {
     "start": "cross-env ENV_MODE=dev webpack serve --port 3000",
     "start:tst": "cross-env ENV_MODE=tst webpack serve",
-    "build": "concurrently yarn:build:*",
-    "build:dev": "cross-env ENV_MODE=dev webpack --mode=production",
-    "build:tst": "cross-env ENV_MODE=tst webpack --mode=production",
+    "build:dev": "cross-env ENV_MODE=dev webpack --mode=development",
+    "build:tst": "cross-env ENV_MODE=tst webpack --mode=development",
     "build:prd": "cross-env ENV_MODE=prd webpack --mode=production",
     "lint": "eslint src --ext js,ts,tsx",
     "format": "prettier --write .",

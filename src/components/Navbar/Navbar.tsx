@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Modal } from '../Modal';
-import { Input, Link, User, useDisclosure } from '@nextui-org/react';
+import { Button, Input, Link, User, useDisclosure } from '@nextui-org/react';
 import { TrackDTO } from '../../services/track/types';
 import { saveTracks } from '../../services/track';
 import { NavLink } from 'react-router-dom';
@@ -61,18 +61,24 @@ export const Navbar = () => {
         </form>
       </Modal.Root> */}
 
-      <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
-        <Modal.Header text="Login" />
-        <Modal.Body rememberPass forgotPass>
-          <div>
-            <NavLink to={'/customer'} onClick={onClose}>
-              Clique aqui para cadastrar
-            </NavLink>
-          </div>
-          <Login onOpenChange={onOpenChange} />
-        </Modal.Body>
-        <Modal.Footer></Modal.Footer>
-      </Modal.Root>
+      <div className="modal_root">
+        <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
+          <Modal.Header text="Login" />
+          <Modal.Body>
+            <div>
+              <NavLink
+                className="register_link"
+                to={'/customer'}
+                onClick={onClose}
+              >
+                Clique aqui para cadastrar
+              </NavLink>
+            </div>
+            <Login onOpenChange={onOpenChange} />
+          </Modal.Body>
+          <Modal.Footer></Modal.Footer>
+        </Modal.Root>
+      </div>
 
       <div className="div-navbar-root">
         <div className="div-nav-logo">
@@ -119,9 +125,14 @@ export const Navbar = () => {
             </Avatar.Root>
           ) : (
             <>
-              <Link onPress={onOpen} color="foreground">
-                Login
-              </Link>
+              <Button
+                color="default"
+                type="button"
+                variant="ghost"
+                onPress={onOpen}
+              >
+                Entrar
+              </Button>
             </>
           )}
         </div>

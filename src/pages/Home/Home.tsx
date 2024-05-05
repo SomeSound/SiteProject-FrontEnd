@@ -2,15 +2,16 @@ import { Banner } from '../../components/Banner/Banner';
 import { Card } from '../../components/Card/Card';
 import { Container } from '../../components/Container';
 import {
-  getAllTracks as getAllTracks,
+  getAllTracks as getTracks,
   getFileTrackById,
   getTrackById,
 } from '../../services/track';
 import { useEffect, useState } from 'react';
 import { Button } from '../../components/shadcn/button';
 import { useStore } from '../../store/useStore';
-import { TrackDTO } from '../../services/track/types';
+import { TrackDTO, TrackPageDTO } from '../../services/track/types';
 import { getArtists } from '../../services/artist';
+import { ArtistDTO, ArtistPageDTO } from '../../services/artist/types';
 
 import './styles.scss';
 
@@ -39,13 +40,13 @@ const banner = [
 
 export const Home = () => {
   const { setPlayTrack } = useStore();
-  const [tracks, setTracks] = useState(null);
-  const [artists, setArtists] = useState(null);
+  const [tracks, setTracks] = useState<TrackPageDTO>(null);
+  const [artists, setArtists] = useState<ArtistPageDTO>(null);
 
-  async function handleGetAllTrack() {
+  async function handleGetTracks() {
     try {
-      const response = await getAllTracks();
-      setTracks(response.data.content);
+      const response = await getTracks();
+      setTracks(response.data);
     } catch (error) {
       console.log('Error get tracks', error);
     }
@@ -71,6 +72,7 @@ export const Home = () => {
           username: track.data.artist.username,
           credits: track.data.artist.credits,
         },
+        id: track.data.id,
         duration: track.data.duration,
         genre: track.data.genre,
         image: track.data.image,
@@ -85,20 +87,41 @@ export const Home = () => {
   }
 
   useEffect(() => {
-    handleGetAllTrack();
+    handleGetTracks();
+    handleGetArtists();
   }, []);
 
   return (
     <div className="home">
       <div className="flex">
-        <div className="banner">
-          <Banner data={banner} />
-        </div>
+        <Banner data={banner} />
         <Container.Root className="section artists">
           <Container.Header title="Top Artistas" />
           <Container.Body>
             {artists !== null
-              ? artists.map((item: any) => (
+              ? artists.artists.map((item: ArtistDTO) => (
+                  <div className="item" key={item.id}>
+                    <Card.Root>
+                      <Card.Artist
+                        name={item.username}
+                        image={
+                          'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long'
+                        }
+                      />
+                    </Card.Root>
+                  </div>
+                ))
+              : 'Erro ao retornar artistas'}
+          </Container.Body>
+        </Container.Root>
+      </div>
+
+      <div className="top_sections flex">
+        <Container.Root className="section artists">
+          <Container.Header title="Top Tracks" />
+          <Container.Body>
+            {tracks !== null
+              ? tracks.tracks.map((item: TrackDTO) => (
                   <div className="item" key={item.id}>
                     <Card.Root>
                       <Card.Track
@@ -116,44 +139,6 @@ export const Home = () => {
               : 'Erro ao retornar artistas'}
           </Container.Body>
         </Container.Root>
-      </div>
-
-      <div className="top_sections flex">
-        {/* <Container.Root className="section musics">
-          <Container.Body>
-            <Player.Root>
-              <Player.Body>
-                <Player.Image
-                  artistName="ArtistName"
-                  trackName="TrackName"
-                  imageUrl="https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long"
-                />
-                {tracks !== null
-                  ? tracks.map((item: any) => (
-                      <Container.Root key={item.id}>
-                        <Container.Body>
-                          <Player.Root>
-                            <Player.Body>
-                              <Player.Image
-                                width={50}
-                                shadow="md"
-                                artistName={item.name}
-                                imageUrl="https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long"
-                                trackName={item.name}
-                                />
-                                <Button onClick={() => playTrackById(item.id)}>
-                                Play track
-                                </Button>
-                                </Player.Body>
-                                </Player.Root>
-                                </Container.Body>
-                                </Container.Root>
-                              ))
-                  : 'lala'}
-              </Player.Body>
-              </Player.Root>
-              </Container.Body>
-            </Container.Root> */}
       </div>
 
       {/* <Container.Root className="recommendations">
