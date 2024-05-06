@@ -27,7 +27,7 @@ export const CardCarouselTrack = ({ data }: cardSliderTrackProps) => {
             key={item.id}
           >
             <div className="p-1">
-              <CardTrack image={item.image} />
+              <CardTrack height={100} width={100} image={item.image} />
             </div>
           </CarouselItem>
         ))}

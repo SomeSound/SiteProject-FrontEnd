@@ -14,7 +14,7 @@ export const UploadTrack = () => {
     try {
       await saveTracks('1', data);
     } catch (error) {
-      console.log('Error save Tracks', error);
+      console.log('Error save track', error);
     }
   }
 
@@ -27,12 +27,6 @@ export const UploadTrack = () => {
               {...register('name')}
               type="text"
               placeholder="Name"
-              className="input_upload_track"
-            />
-            <Input
-              {...register('duration')}
-              type="text"
-              placeholder="Duration"
               className="input_upload_track"
             />
             <Input

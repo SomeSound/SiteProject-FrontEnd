@@ -4,16 +4,15 @@ import { Container } from '../../components/Container';
 import {
   getAllTracks as getTracks,
   getFileTrackById,
-  getTrackById,
 } from '../../services/track';
 import { useEffect, useState } from 'react';
-import { Button } from '../../components/shadcn/button';
 import { useStore } from '../../store/useStore';
 import { TrackDTO, TrackPageDTO } from '../../services/track/types';
 import { getArtists } from '../../services/artist';
 import { ArtistDTO, ArtistPageDTO } from '../../services/artist/types';
 
 import './styles.scss';
+import { Button } from '@nextui-org/react';
 
 const banner = [
   {
@@ -26,14 +25,6 @@ const banner = [
   },
   {
     id: '3',
-    src: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/2745ba37867307.574eee5ce97df.jpg',
-  },
-  {
-    id: '4',
-    src: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/2745ba37867307.574eee5ce97df.jpg',
-  },
-  {
-    id: '5',
     src: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/2745ba37867307.574eee5ce97df.jpg',
   },
 ];
@@ -61,26 +52,20 @@ export const Home = () => {
     }
   }
 
-  async function playTrackById(id: number) {
+  async function playTrackById(item: TrackDTO) {
     try {
-      const url = await getFileTrackById(id);
-      const track = await getTrackById(id);
+      const url = await getFileTrackById(item.id);
 
-      const data: TrackDTO = {
-        artist: {
-          id: track.data.artist.id,
-          username: track.data.artist.username,
-          credits: track.data.artist.credits,
-        },
-        id: track.data.id,
-        duration: track.data.duration,
-        genre: track.data.genre,
-        image: track.data.image,
-        name: track.data.name,
-        path: url.data,
+      const artist: ArtistDTO = {
+        id: 1,
+        username: 'testeFixo',
+        credits: 0,
       };
 
-      setPlayTrack(data);
+      item.artist = artist;
+      item.path = url.data;
+
+      setPlayTrack(item);
     } catch (error) {
       console.log('Error play Track', error);
     }
@@ -102,16 +87,19 @@ export const Home = () => {
             <Container.Body>
               {artists !== null
                 ? tracks.tracks.map((item: TrackDTO) => (
-                    <Card.Root>
-                      <div className="track" key={item.id}>
-                        <Card.Artist
-                          name={item.name}
+                    <div className="track" key={item.id}>
+                      <Card.Root>
+                        <Card.Track
+                          height={80}
+                          width={80}
                           image={
                             'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long'
                           }
                         />
-                      </div>
-                    </Card.Root>
+                        <Card.Description text={item.name} />
+                        <Card.PlayButton event={() => playTrackById(item)} />
+                      </Card.Root>
+                    </div>
                   ))
                 : 'Erro ao retornar artistas'}
             </Container.Body>
@@ -128,14 +116,14 @@ export const Home = () => {
                   <div className="track" key={item.id}>
                     <Card.Root>
                       <Card.Track
+                        height={90}
+                        width={90}
                         image={
                           'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long'
                         }
                       />
                       <Card.Description text={item.name} />
-                      <Button onClick={() => playTrackById(item.id)}>
-                        Selecionar Track
-                      </Button>
+                      <Card.PlayButton event={() => playTrackById(item)} />
                     </Card.Root>
                   </div>
                 ))
