@@ -6,43 +6,57 @@ import {
   DropdownItem,
   Avatar,
   DropdownSection,
-  Button,
 } from '@nextui-org/react';
-import { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { HtmlHTMLAttributes, useContext } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
-export function AvatarDropdown() {
+interface AvatarDropdownProps extends HtmlHTMLAttributes<HTMLButtonElement> {
+  image: string;
+}
+
+export function AvatarDropdown({ image }: AvatarDropdownProps) {
   const { signOut } = useContext(AuthContext);
-
-  function handleCreateArtistPage() {
-    signOut();
-  }
 
   function handleSignOut() {
     signOut();
   }
-
   return (
     <div className="flex items-center gap-4">
-      <Dropdown placement="bottom-end">
+      <Dropdown placement="bottom-end" className="dark">
         <DropdownTrigger>
-          <Button />
-          {/* <Avatar isBordered color="default"/> PRECISA SER ALTERADO, DA ERRO NO DOM*/}
+          <Avatar
+            as="button"
+            isBordered
+            className="transition-transform"
+            src={image}
+            alt="Avatar"
+          />
         </DropdownTrigger>
         <DropdownMenu aria-label="Artist Actions" variant="flat">
           <DropdownSection aria-label="Profile Actions" showDivider>
-            <DropdownItem key="be_an_artist" onClick={handleCreateArtistPage}>
-              <NavLink to={'/artist'}>Seja um artista!</NavLink>
+            <DropdownItem key="be_an_artist" textValue="Seja um artista!">
+              <Link to={'/artist'}>Seja um artista!</Link>
             </DropdownItem>
-            <DropdownItem key="artist_profile">Perfil Artista</DropdownItem>
-            <DropdownItem key="credits" endContent={0}>
+            <DropdownItem key="artist_profile" textValue="Perfil Artista">
+              Perfil Artista
+            </DropdownItem>
+            <DropdownItem key="credits" endContent={0} textValue="Créditos">
               Créditos:
             </DropdownItem>
           </DropdownSection>
           <DropdownSection aria-label="Profile Actions">
-            <DropdownItem key="profile">Perfil</DropdownItem>
-            <DropdownItem key="settings">Configurações</DropdownItem>
-            <DropdownItem key="logout" color="danger" onClick={handleSignOut}>
+            <DropdownItem key="profile" textValue="Perfil">
+              Perfil
+            </DropdownItem>
+            <DropdownItem key="settings" textValue="Configurações">
+              Configurações
+            </DropdownItem>
+            <DropdownItem
+              key="logout"
+              color="danger"
+              onClick={handleSignOut}
+              textValue="Sair"
+            >
               Sair
             </DropdownItem>
           </DropdownSection>

@@ -1,5 +1,9 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
-import { getCustomerByEmail, logInCustomer } from '../services/customer';
+import {
+  getCustomerByEmail,
+  logInCustomer,
+  refreshToken,
+} from '../services/customer';
 import { CustomerDTO, LoginDTO } from '../services/customer/types';
 import { parseCookies, setCookie } from 'nookies';
 
@@ -20,33 +24,48 @@ export const AuthProvider = ({ children }: any) => {
   const [signed, setSigned] = useState<boolean>(false);
 
   async function signIn(data: LoginDTO) {
-    const response = await logInCustomer(data);
+    try {
+      const response = await logInCustomer(data);
 
-    console.log(response.data.token.token);
+      setCookie(null, 'token', response.data.token.token, {
+        path: '/',
+      });
 
-    setCookie(null, 'token', response.data.token.token, {
-      path: '/',
-      maxAge: 60 * 60 * 1, // 1 hour
-    });
+      setUser(response.data.customer);
 
-    const customer = await getCustomerByEmail(data.email);
-    setUser(customer.data);
+      setCookie(null, 'user', response.data.customer.email);
+      setSigned(true);
+    } catch (error) {
+      console.error('Error logIn: ', error);
+    }
+  }
 
-    setCookie(null, 'user', customer.data.email);
-    setSigned(true);
+  async function updateToken() {
+    try {
+      const response = await refreshToken();
+      setCookie(null, 'token', response.data.token, {
+        path: '/',
+      });
+    } catch (error) {
+      console.error('Error refreshing token:', error);
+      signOut();
+    }
   }
 
   async function signOut() {
-    setCookie(null, 'token', null);
-    setCookie(null, 'user', null);
+    setCookie(null, 'token', 'null');
+    setCookie(null, 'user', 'null');
     setUser(null);
     setSigned(false);
   }
 
   useEffect(() => {
     const { token } = parseCookies();
-    if (token) {
+    if (token !== 'null') {
       setSigned(true);
+      updateToken();
+    } else {
+      signOut();
     }
   }, []);
 

@@ -137,8 +137,8 @@ export const Home = () => {
             <Container.Body>
               {artists !== null
                 ? artists.artists.map((item: ArtistDTO) => (
-                    <Card.Root>
-                      <div className="artist" key={item.id}>
+                    <Card.Root key={item.id}>
+                      <div className="artist">
                         <Card.Artist
                           name={item.username}
                           image={

@@ -14,28 +14,30 @@ export const App = () => {
   return (
     <AuthProvider>
       <NextUIProvider>
-        <Navbar />
+        <main className="dark">
+          <Navbar />
 
-        <div className="flex app_root_container">
-          <Sidebar />
-          <Outlet />
-        </div>
+          <div className="flex app_root_container">
+            <Sidebar />
+            <Outlet />
+          </div>
 
-        <ToastContainer
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={true}
-          newestOnTop={false}
-          closeOnClick={true}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-          transition={Bounce}
-        />
+          <ToastContainer
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar={true}
+            newestOnTop={false}
+            closeOnClick={true}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+            transition={Bounce}
+          />
 
-        <Player />
+          <Player />
+        </main>
       </NextUIProvider>
     </AuthProvider>
   );

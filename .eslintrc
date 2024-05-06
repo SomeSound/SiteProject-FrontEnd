@@ -21,5 +21,6 @@
     ],
     "rules": {
         "semi": ["error", "always"],
+        "react/no-unknown-property": ["error", { "ignore": ["originalProps"] }]
     }
 }

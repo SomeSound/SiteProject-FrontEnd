@@ -1,66 +1,19 @@
 import { useContext } from 'react';
 import { Modal } from '../Modal';
-import { Button, Input, Link, User, useDisclosure } from '@nextui-org/react';
-import { TrackDTO } from '../../services/track/types';
-import { saveTracks } from '../../services/track';
+import { Button, Input, useDisclosure } from '@nextui-org/react';
 import { NavLink } from 'react-router-dom';
 import { Login } from '../Login/Login';
 import { AuthContext } from '../../context/AuthContext';
+import { Avatar } from '../Avatar';
 
 import './styles.scss';
-import { Avatar } from '../Avatar';
 
 export const Navbar = () => {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const { signed } = useContext(AuthContext);
 
-  async function handleSaveTrack(data: TrackDTO) {
-    try {
-      await saveTracks('1', data);
-    } catch (error) {
-      console.log('Error save Tracks', error);
-    }
-  }
-
   return (
     <>
-      {/* <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
-        <Modal.Header text="Upload Track" />
-
-        <form onSubmit={handleSubmit(handleSaveTrack)}>
-          <Modal.Body rememberPass forgotPass>
-            <div>
-              <Input {...register('name')} type="text" placeholder="Name" />
-              <Input
-                {...register('duration')}
-                type="text"
-                placeholder="Duration"
-              />
-              <Input {...register('genre')} type="text" placeholder="Genre" />
-              <Input {...register('image')} type="text" placeholder="Image" />
-            </div>
-
-            <Upload.Root>
-              <div>
-                <input type="file" {...register('file')} />
-              </div>
-              <div>
-                <Upload.List />
-              </div>
-            </Upload.Root>
-          </Modal.Body>
-          <Modal.Footer>
-            <Modal.Button
-              color="success"
-              variant="flat"
-              text="Enviar"
-              type="submit"
-              onClick={() => onClose}
-            />
-          </Modal.Footer>
-        </form>
-      </Modal.Root> */}
-
       <div className="modal_root">
         <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
           <Modal.Header text="Login" />
@@ -119,9 +72,9 @@ export const Navbar = () => {
                   <NavLink to={'/upload'}>Upload</NavLink>
                 </Button>
               </div>
-              <div className="avatar_dropdown">
+              <div className="avatar_dropdown_nav">
                 <Avatar.Root>
-                  <Avatar.Dropdown />
+                  <Avatar.Dropdown image="" />
                 </Avatar.Root>
               </div>
             </div>
