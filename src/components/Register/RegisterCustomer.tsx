@@ -5,6 +5,8 @@ import { createCustomer } from '../../services/customer';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import './styles.scss';
+
 export const RegisterCustomer = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
@@ -22,26 +24,54 @@ export const RegisterCustomer = () => {
   }
 
   return (
-    <div className="registerCustomer">
+    <div className="register_customer_div">
       <form onSubmit={handleSubmit(handleRegisterCustomer)}>
+        <div className="flex">
+          <Input
+            {...register('name')}
+            type="text"
+            placeholder="Name"
+            className="input_register"
+          />
+          <Input
+            {...register('avatar')}
+            type="text"
+            placeholder="avatar"
+            className="input_register"
+          />
+        </div>
+
         <div>
-          <p>name</p>
-          <Input {...register('name')} type="text" placeholder="Name" />
-          <p>email</p>
-          <Input {...register('email')} type="text" placeholder="email" />
-          <p>password</p>
-          <Input {...register('password')} type="text" placeholder="password" />
-          <p>country</p>
-          <Input {...register('country')} type="text" placeholder="country" />
-          <p>avatar</p>
-          <Input {...register('avatar')} type="text" placeholder="avatar" />
-          <p>birthDate</p>
+          <Input
+            {...register('email')}
+            type="text"
+            placeholder="email"
+            className="input_register"
+          />
+          <Input
+            {...register('password')}
+            type="text"
+            placeholder="password"
+            className="input_register"
+          />
+        </div>
+
+        <div className="flex">
+          <Input
+            {...register('country')}
+            type="text"
+            placeholder="country"
+            className="input_register"
+          />
           <Input
             {...register('birthDate')}
             type="text"
             placeholder="birthDate"
+            className="input_register"
           />
-          <br />
+        </div>
+
+        <div>
           <Button type="submit">Cadastrar</Button>
         </div>
       </form>

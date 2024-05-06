@@ -1,7 +1,6 @@
-import { Input } from '@nextui-org/react';
+import { Button, Checkbox, Input, Link } from '@nextui-org/react';
 import { useForm } from 'react-hook-form';
 import { LoginDTO } from '../../services/customer/types';
-import { Button } from '../Button/Button';
 import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
 
@@ -33,7 +32,23 @@ export const Login = ({ onOpenChange }: LoginProps) => {
         <Input {...register('email')} type="text" placeholder="Email" />
         <Input {...register('password')} type="text" placeholder="Password" />
 
-        <Button color="success" text="Entrar" type="submit" variant="solid" />
+        <Button color="default" type="submit" variant="shadow">
+          Entrar
+        </Button>
+
+        <div className="flex py-2 px-1 justify-between">
+          <Checkbox
+            classNames={{
+              label: 'text-small',
+            }}
+          >
+            Relembrar
+          </Checkbox>
+
+          <Link color="primary" href="#" size="sm">
+            Esqueceu a senha?
+          </Link>
+        </div>
       </form>
     </>
   );

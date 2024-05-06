@@ -1,8 +1,8 @@
 import { AxiosPromise } from 'axios';
 import { useService } from '../hook/useService';
-import { TrackDTO } from './types';
+import { TrackDTO, TrackPageDTO } from './types';
 
-export const getAllTracks = (): AxiosPromise<any> => {
+export const getAllTracks = (): AxiosPromise<TrackPageDTO> => {
   const { get } = useService();
 
   return get(`/track`, '', '');

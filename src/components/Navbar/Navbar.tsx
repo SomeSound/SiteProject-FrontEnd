@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Modal } from '../Modal';
-import { Input, Link, User, useDisclosure } from '@nextui-org/react';
+import { Button, Input, Link, User, useDisclosure } from '@nextui-org/react';
 import { TrackDTO } from '../../services/track/types';
 import { saveTracks } from '../../services/track';
 import { NavLink } from 'react-router-dom';
@@ -61,35 +61,41 @@ export const Navbar = () => {
         </form>
       </Modal.Root> */}
 
-      <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
-        <Modal.Header text="Login" />
-        <Modal.Body rememberPass forgotPass>
-          <div>
-            <NavLink to={'/customer'} onClick={onClose}>
-              Clique aqui para cadastrar
-            </NavLink>
-          </div>
-          <Login onOpenChange={onOpenChange} />
-        </Modal.Body>
-        <Modal.Footer></Modal.Footer>
-      </Modal.Root>
+      <div className="modal_root">
+        <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
+          <Modal.Header text="Login" />
+          <Modal.Body>
+            <div>
+              <NavLink
+                className="register_link"
+                to={'/customer'}
+                onClick={onClose}
+              >
+                Clique aqui para cadastrar
+              </NavLink>
+            </div>
+            <Login onOpenChange={onOpenChange} />
+          </Modal.Body>
+          <Modal.Footer></Modal.Footer>
+        </Modal.Root>
+      </div>
 
-      <div className="div-navbar-root">
-        <div className="div-nav-logo">
+      <div className="div_navbar_root">
+        <div className="div_nav_logo">
           <NavLink to={'/'}>Logo</NavLink>
         </div>
-        <div className="div-navbar-items flex">
-          <div className="div-nav-item">
+        <div className="div_navbar_items flex">
+          <div className="div_nav_item">
             <NavLink to={'/'}>Gêneros</NavLink>
           </div>
-          <div className="div-nav-item">
+          <div className="div_nav_item">
             <NavLink to={'/'}>Músicas</NavLink>
           </div>
-          <div className="div-nav-item">
+          <div className="div_nav_item">
             <NavLink to={'/'}>Artistas</NavLink>
           </div>
         </div>
-        <div className="div-nav-search">
+        <div className="div_nav_search">
           <Input
             label="Procurar"
             isClearable
@@ -105,23 +111,30 @@ export const Navbar = () => {
             placeholder="artistas, músicas, álbums..."
           ></Input>
         </div>
-        <div className="flex">
-          {/* <Container.Root>
-            <Container.Body>
-              <Button onClick={onOpenChange}>Upload Track</Button>
-            </Container.Body>
-          </Container.Root> */}
-        </div>
-        <div className="div-nav-avatar">
+        <div className="div_nav_avatar">
           {signed ? (
-            <Avatar.Root>
-              <Avatar.Dropdown />
-            </Avatar.Root>
+            <div className="flex">
+              <div className="upload_button">
+                <Button color="default" type="button" variant="ghost">
+                  <NavLink to={'/upload'}>Upload</NavLink>
+                </Button>
+              </div>
+              <div className="avatar_dropdown">
+                <Avatar.Root>
+                  <Avatar.Dropdown />
+                </Avatar.Root>
+              </div>
+            </div>
           ) : (
             <>
-              <Link onPress={onOpen} color="foreground">
-                Login
-              </Link>
+              <Button
+                color="default"
+                type="button"
+                variant="ghost"
+                onPress={onOpen}
+              >
+                Entrar
+              </Button>
             </>
           )}
         </div>

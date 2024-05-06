@@ -1,6 +1,12 @@
+@import './theme/theme.scss';
+
 :root {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #565656;
+    font-family: "Exo 2", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    color: rgb(244, 253, 244);
+    background-color: $background-color;
     overflow-x: hidden;
     width: 100vw;
     height: 100vh;
@@ -9,7 +15,7 @@
     margin: 0 auto;
 }
 
-.root_container {
+.app_root_container {
     margin: 0rem 0rem 1rem 0rem;
     max-width: calc(100vw - 4rem);
 }

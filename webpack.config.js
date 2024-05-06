@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const history = require('connect-history-api-fallback');
+
 module.exports = {
   mode: 'development',
   entry: './src/index.tsx',
@@ -10,6 +12,9 @@ module.exports = {
   },
   devServer: {
     static: './build',
+    historyApiFallback: true,
+    port: 3000,
+    compress: true,
   },
   module: {
     rules: [

@@ -16,7 +16,7 @@ export const App = () => {
       <NextUIProvider>
         <Navbar />
 
-        <div className="flex root_container">
+        <div className="flex app_root_container">
           <Sidebar />
           <Outlet />
         </div>
