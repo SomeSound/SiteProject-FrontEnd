@@ -7,16 +7,14 @@ module.exports = {
   entry: './src/index.tsx',
   devtool: 'inline-source-map',
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.join(__dirname, '/build'),
     filename: 'bundle.js',
   },
   devServer: {
-    static: {
-      directory: path.resolve(__dirname, 'build'),
-    },
-    compress: true,
-    port: 3000,
+    static: './build',
     historyApiFallback: true,
+    port: 3000,
+    compress: true,
   },
   module: {
     rules: [
