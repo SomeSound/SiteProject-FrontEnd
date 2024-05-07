@@ -12,7 +12,6 @@ import { getArtists } from '../../services/artist';
 import { ArtistDTO, ArtistPageDTO } from '../../services/artist/types';
 
 import './styles.scss';
-import { Button } from '@nextui-org/react';
 
 const banner = [
   {

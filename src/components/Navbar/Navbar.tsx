@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Modal } from '../Modal';
 import { Button, Input, useDisclosure } from '@nextui-org/react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Login } from '../Login/Login';
 import { AuthContext } from '../../context/AuthContext';
 import { Avatar } from '../Avatar';
@@ -10,7 +10,7 @@ import './styles.scss';
 
 export const Navbar = () => {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
-  const { signed } = useContext(AuthContext);
+  const { userSigned: signed, artists } = useContext(AuthContext);
 
   return (
     <>
@@ -19,13 +19,13 @@ export const Navbar = () => {
           <Modal.Header text="Login" />
           <Modal.Body>
             <div>
-              <NavLink
+              <Link
                 className="register_link"
                 to={'/customer'}
                 onClick={onClose}
               >
                 Clique aqui para cadastrar
-              </NavLink>
+              </Link>
             </div>
             <Login onOpenChange={onOpenChange} />
           </Modal.Body>
@@ -35,17 +35,17 @@ export const Navbar = () => {
 
       <div className="div_navbar_root">
         <div className="div_nav_logo">
-          <NavLink to={'/'}>Logo</NavLink>
+          <Link to={'/'}>Logo</Link>
         </div>
         <div className="div_navbar_items flex">
           <div className="div_nav_item">
-            <NavLink to={'/'}>Gêneros</NavLink>
+            <Link to={'/'}>Gêneros</Link>
           </div>
           <div className="div_nav_item">
-            <NavLink to={'/'}>Músicas</NavLink>
+            <Link to={'/'}>Músicas</Link>
           </div>
           <div className="div_nav_item">
-            <NavLink to={'/'}>Artistas</NavLink>
+            <Link to={'/'}>Artistas</Link>
           </div>
         </div>
         <div className="div_nav_search">
@@ -67,11 +67,13 @@ export const Navbar = () => {
         <div className="div_nav_avatar">
           {signed ? (
             <div className="flex">
-              <div className="upload_button">
-                <Button color="default" type="button" variant="ghost">
-                  <NavLink to={'/upload'}>Upload</NavLink>
-                </Button>
-              </div>
+              {artists !== null && (
+                <div className="upload_button">
+                  <Button color="default" type="button" variant="ghost">
+                    <Link to={'/upload'}>Upload</Link>
+                  </Button>
+                </div>
+              )}
               <div className="avatar_dropdown_nav">
                 <Avatar.Root>
                   <Avatar.Dropdown image="" />

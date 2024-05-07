@@ -20,7 +20,6 @@ export const Login = ({ onOpenChange }: LoginProps) => {
     try {
       await signIn(data);
       onOpenChange(false);
-      navigate('/');
     } catch (error) {
       console.log('Error to logIn', error);
     }
