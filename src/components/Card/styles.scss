@@ -1,5 +1,10 @@
 .card_root {
     display: flex;
+    margin: 0rem 1rem 1rem 1rem;
+    width: auto;
+    height: fit-content;
+    background-color: black;
+    border-radius: 10px;
 }
 
 .card_track {
@@ -14,5 +19,15 @@
 
 .card_play_button {
     margin-left: auto;
-    margin: 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 1rem;
+}
+
+.card_info {
+    margin-left: 0.5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+    text-align: left;
 }

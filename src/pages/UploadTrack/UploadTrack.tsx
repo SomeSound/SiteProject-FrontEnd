@@ -4,15 +4,18 @@ import { saveTracks } from '../../services/track';
 import { Container } from '../../components/Container';
 import { Upload } from '../../components/Upload';
 import { useForm } from 'react-hook-form';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 import './styles.scss';
 
 export const UploadTrack = () => {
   const { register, handleSubmit } = useForm();
+  const { artist } = useContext(AuthContext);
 
   async function handleSaveTrack(data: TrackDTO) {
     try {
-      await saveTracks('1', data);
+      await saveTracks(artist.id, data);
     } catch (error) {
       console.log('Error save track', error);
     }

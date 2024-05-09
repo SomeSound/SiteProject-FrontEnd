@@ -102,6 +102,10 @@ export const AuthProvider = ({ children }: any) => {
     }
   }
 
+  function addArtist(artist: ArtistDTO) {
+    artists.push(artist);
+  }
+
   async function updateToken() {
     try {
       const response = await refreshToken();

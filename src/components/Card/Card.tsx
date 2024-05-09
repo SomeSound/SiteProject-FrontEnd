@@ -1,4 +1,4 @@
-import { CardDescription } from './CardDescription';
+import { CardInfo } from './CardInfo';
 import { CardRoot } from './CardRoot';
 import { CardCarouselTrack } from './CardCarouselTrack';
 import { CardTrack } from './CardTrack';
@@ -8,7 +8,7 @@ import { CardPlayButton } from './CardPlayButton';
 export const Card = {
   Root: CardRoot,
   Track: CardTrack,
-  Description: CardDescription,
+  Info: CardInfo,
   Slider: CardCarouselTrack,
   Artist: CardArtist,
   PlayButton: CardPlayButton,

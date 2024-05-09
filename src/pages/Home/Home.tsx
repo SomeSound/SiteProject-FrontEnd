@@ -62,7 +62,7 @@ export const Home = () => {
       };
 
       item.artist = artist;
-      item.path = url.data;
+      item.path = url.data.path;
 
       setPlayTrack(item);
     } catch (error) {
@@ -84,18 +84,21 @@ export const Home = () => {
           <Container.Root>
             <Container.Header title="Top Tracks" />
             <Container.Body>
-              {artists !== null
+              {tracks !== null
                 ? tracks.tracks.map((item: TrackDTO) => (
-                    <div className="track" key={item.id}>
+                    <div className="track_card" key={item.id}>
                       <Card.Root>
                         <Card.Track
-                          height={80}
-                          width={80}
+                          height={50}
+                          width={50}
                           image={
                             'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long'
                           }
                         />
-                        <Card.Description text={item.name} />
+                        <Card.Info
+                          artist={item.artist.username}
+                          name={item.name}
+                        />
                         <Card.PlayButton event={() => playTrackById(item)} />
                       </Card.Root>
                     </div>
@@ -112,16 +115,19 @@ export const Home = () => {
           <Container.Body>
             {tracks !== null
               ? tracks.tracks.map((item: TrackDTO) => (
-                  <div className="track" key={item.id}>
+                  <div className="track_card" key={item.id}>
                     <Card.Root>
                       <Card.Track
-                        height={90}
-                        width={90}
+                        height={60}
+                        width={60}
                         image={
                           'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long'
                         }
                       />
-                      <Card.Description text={item.name} />
+                      <Card.Info
+                        artist={item.artist.username}
+                        name={item.name}
+                      />
                       <Card.PlayButton event={() => playTrackById(item)} />
                     </Card.Root>
                   </div>

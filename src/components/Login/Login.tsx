@@ -14,7 +14,6 @@ interface LoginProps {
 export const Login = ({ onOpenChange }: LoginProps) => {
   const { signIn } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
-  const navigate = useNavigate();
 
   async function handleLogin(data: LoginDTO) {
     try {

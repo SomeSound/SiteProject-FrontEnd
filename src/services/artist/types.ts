@@ -13,5 +13,6 @@ export type ArtistDTO = {
   id: number;
   username: string;
   credits: number;
+  email?: string;
   carts?: [];
 };
