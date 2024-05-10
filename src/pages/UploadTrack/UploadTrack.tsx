@@ -1,5 +1,4 @@
-import { Button, Input, useDisclosure } from '@nextui-org/react';
-import { TrackDTO } from '../../services/track/types';
+import { Button, Input } from '@nextui-org/react';
 import { saveTracks } from '../../services/track';
 import { Container } from '../../components/Container';
 import { Upload } from '../../components/Upload';
@@ -13,9 +12,10 @@ export const UploadTrack = () => {
   const { register, handleSubmit } = useForm();
   const { artist } = useContext(AuthContext);
 
-  async function handleSaveTrack(data: TrackDTO) {
+  async function handleSaveTrack(data: any) {
     try {
-      await saveTracks(artist.id, data);
+      const response = await saveTracks(artist.id.toString(), data);
+      console.log(response);
     } catch (error) {
       console.log('Error save track', error);
     }
