@@ -5,7 +5,6 @@ import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
 
 import './styles.scss';
-import { useNavigate } from 'react-router-dom';
 
 interface LoginProps {
   onOpenChange: (isOpen: boolean) => void;

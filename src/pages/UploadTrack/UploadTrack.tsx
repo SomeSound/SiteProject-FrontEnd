@@ -14,7 +14,8 @@ export const UploadTrack = () => {
 
   async function handleSaveTrack(data: any) {
     try {
-      const response = await saveTracks(artist.id.toString(), data);
+      data.artistId = artist.id;
+      const response = await saveTracks(data);
       console.log(response);
     } catch (error) {
       console.log('Error save track', error);

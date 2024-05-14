@@ -8,10 +8,10 @@ export const getAllTracks = (): AxiosPromise<TrackPageDTO> => {
   return get(`/track`, '', '');
 };
 
-export const saveTracks = (artistId: string, data: any): AxiosPromise<any> => {
+export const saveTracks = (data: any): AxiosPromise<any> => {
   const { post } = useService();
 
-  return post(`/track?artistId=${artistId}`, data);
+  return post(`/track?artistId=${data.artistId}`, data);
 };
 
 export const getFileTrackById = (id: number): AxiosPromise<TrackDTO> => {
