@@ -11,7 +11,20 @@
 }
 
 .section {
-    width: 60%;
+    width: 70%;
+}
+
+.releases {
+    width: 100%;
+    margin-right: 1rem;
+}
+
+.top_tracks {
+    margin-top: 1rem;
+}
+
+.top_artists {
+    margin-left: 1rem;
 }
 
 .top_sections {
@@ -20,4 +33,8 @@
 
 .item:hover {
     background-color: #a9a9a9;
+}
+
+.track_card {
+    width: 100%;
 }

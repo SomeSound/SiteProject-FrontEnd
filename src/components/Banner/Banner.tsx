@@ -1,6 +1,5 @@
-import { Image } from '@nextui-org/react';
+import { Card, CardBody, Image } from '@nextui-org/react';
 import { Carousel, CarouselContent, CarouselItem } from '../shadcn/carousel';
-import { Card, CardContent } from '../shadcn/card';
 import Autoplay from 'embla-carousel-autoplay';
 
 import './styles.scss';
@@ -36,9 +35,9 @@ export const Banner = ({ data }: bannerProps) => {
             >
               <div className="p-1">
                 <Card className="border-none">
-                  <CardContent className="flex aspect-square items-center justify-center">
+                  <CardBody className="flex aspect-square items-center justify-center">
                     <Image height={1080} width={480} src={item.src} />
-                  </CardContent>
+                  </CardBody>
                 </Card>
               </div>
             </CarouselItem>

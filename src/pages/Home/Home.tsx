@@ -1,13 +1,9 @@
 import { Banner } from '../../components/Banner/Banner';
-import { Card } from '../../components/Card/Card';
+import { Card } from '../../components/Card';
 import { Container } from '../../components/Container';
-import {
-  getAllTracks as getTracks,
-  getFileTrackById,
-} from '../../services/track';
+import { getTracks } from '../../services/track';
 import { useEffect, useState } from 'react';
-import { useStore } from '../../store/useStore';
-import { TrackDTO, TrackPageDTO } from '../../services/track/types';
+import { TrackPageDTO } from '../../services/track/types';
 import { getArtists } from '../../services/artist';
 import { ArtistDTO, ArtistPageDTO } from '../../services/artist/types';
 
@@ -29,9 +25,8 @@ const banner = [
 ];
 
 export const Home = () => {
-  const { setPlayTrack } = useStore();
-  const [tracks, setTracks] = useState<TrackPageDTO>(null);
   const [artists, setArtists] = useState<ArtistPageDTO>(null);
+  const [tracks, setTracks] = useState<TrackPageDTO>(null);
 
   async function handleGetTracks() {
     try {
@@ -51,25 +46,6 @@ export const Home = () => {
     }
   }
 
-  async function playTrackById(item: TrackDTO) {
-    try {
-      const url = await getFileTrackById(item.id);
-
-      const artist: ArtistDTO = {
-        id: 1,
-        username: 'testeFixo',
-        credits: 0,
-      };
-
-      item.artist = artist;
-      item.path = url.data.path;
-
-      setPlayTrack(item);
-    } catch (error) {
-      console.log('Error play Track', error);
-    }
-  }
-
   useEffect(() => {
     handleGetTracks();
     handleGetArtists();
@@ -80,82 +56,27 @@ export const Home = () => {
       <div className="flex">
         <Banner data={banner} />
 
-        <div className="section">
-          <Container.Root>
-            <Container.Header title="Top Tracks" />
-            <Container.Body>
-              {tracks !== null
-                ? tracks.tracks.map((item: TrackDTO) => (
-                    <div className="track_card" key={item.id}>
-                      <Card.Root>
-                        <Card.Track
-                          height={50}
-                          width={50}
-                          image={
-                            'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long'
-                          }
-                        />
-                        <Card.Info
-                          artist={item.artist.username}
-                          name={item.name}
-                        />
-                        <Card.PlayButton event={() => playTrackById(item)} />
-                      </Card.Root>
-                    </div>
-                  ))
-                : 'Erro ao retornar artistas'}
-            </Container.Body>
-          </Container.Root>
+        <div className="section top_tracks">
+          <Card.Root>
+            <Card.Header>Top Tracks</Card.Header>
+            <Card.Track data={tracks} height={50} width={50} />
+          </Card.Root>
         </div>
       </div>
 
       <div className="top_sections flex">
-        <Container.Root className="section">
-          <Container.Header title="Novos Lançamentos" />
-          <Container.Body>
-            {tracks !== null
-              ? tracks.tracks.map((item: TrackDTO) => (
-                  <div className="track_card" key={item.id}>
-                    <Card.Root>
-                      <Card.Track
-                        height={60}
-                        width={60}
-                        image={
-                          'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long'
-                        }
-                      />
-                      <Card.Info
-                        artist={item.artist.username}
-                        name={item.name}
-                      />
-                      <Card.PlayButton event={() => playTrackById(item)} />
-                    </Card.Root>
-                  </div>
-                ))
-              : 'Erro ao retornar artistas'}
-          </Container.Body>
-        </Container.Root>
+        <div className="section releases">
+          <Card.Root>
+            <Card.Header>Releases</Card.Header>
+            <Card.Track data={tracks} height={50} width={50} />
+          </Card.Root>
+        </div>
 
-        <div className="section">
-          <Container.Root>
-            <Container.Header title="Top Artistas" />
-            <Container.Body>
-              {artists !== null
-                ? artists.artists.map((item: ArtistDTO) => (
-                    <Card.Root key={item.id}>
-                      <div className="artist">
-                        <Card.Artist
-                          name={item.username}
-                          image={
-                            'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long'
-                          }
-                        />
-                      </div>
-                    </Card.Root>
-                  ))
-                : 'Erro ao retornar artistas'}
-            </Container.Body>
-          </Container.Root>
+        <div className="section top_artists">
+          <Card.Root>
+            <Card.Header>Top Artists</Card.Header>
+            <Card.Artist data={artists} />
+          </Card.Root>
         </div>
       </div>
 
