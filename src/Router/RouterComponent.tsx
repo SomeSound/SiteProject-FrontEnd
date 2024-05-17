@@ -5,6 +5,7 @@ import { Landing } from '../pages/Landing/Landing';
 import { RegisterCustomer } from '../pages/Register/RegisterCustomer';
 import { RegisterArtist } from '../pages/Register/RegisterArtist';
 import { UploadTrack } from '../pages/UploadTrack/UploadTrack';
+import { Profile } from '../pages/Profile/Profile';
 
 export const Routes = createBrowserRouter([
   {
@@ -20,7 +21,11 @@ export const Routes = createBrowserRouter([
         element: <RegisterCustomer />,
       },
       {
-        path: '/artist',
+        path: '/profile',
+        element: <Profile />,
+      },
+      {
+        path: '/artist/register',
         element: <RegisterArtist />,
       },
       {

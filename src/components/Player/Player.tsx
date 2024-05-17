@@ -1,10 +1,10 @@
 import { useStore } from '../../store/useStore';
 import { Player as PlayerComponent } from '.';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './styles.scss';
 
 export const Player = () => {
-  const { playTrack, setPlayTrack } = useStore();
+  const { playTrack } = useStore();
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handleTogglePlay = () => {
@@ -24,15 +24,15 @@ export const Player = () => {
             <div className="flex">
               <PlayerComponent.Image
                 className="track_image"
-                artistName={playTrack === null ? '' : playTrack.artist.username}
-                imageUrl="https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long"
-                trackName={playTrack === null ? '' : playTrack.name}
+                artistName={playTrack !== null && playTrack.artist.username}
+                imageUrl={
+                  playTrack !== null
+                    ? playTrack.image
+                    : 'https://www.adb.inf.br/ach/app01/index.php?p=digitallibrary/getfile&id=7196&preview=long'
+                }
+                trackName={playTrack !== null && playTrack.name}
               />
-              {playTrack !== null ? (
-                <PlayerComponent.HeartButton />
-              ) : (
-                'Selecione uma track'
-              )}
+              {playTrack !== null && <PlayerComponent.HeartButton />}
 
               <div className="w-full">
                 <div className="flex flex-col">

@@ -9,10 +9,11 @@ import {
   DropdownSection,
   User,
   Button,
+  Chip,
 } from '@nextui-org/react';
 import { HtmlHTMLAttributes, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { parseCookies } from 'nookies';
+import { Link } from 'react-router-dom';
 
 interface AvatarDropdownProps extends HtmlHTMLAttributes<HTMLButtonElement> {
   image: string;
@@ -57,29 +58,35 @@ export function AvatarDropdown({ image }: AvatarDropdownProps) {
                   textValue={item.username}
                   onClick={() => handleSelectArtist(item.id)}
                 >
-                  <User
-                    name={item.username}
-                    description={item.credits}
-                    avatarProps={{
-                      src: 'https://i.pravatar.cc/150?u=a04258114e29026702d',
-                    }}
-                  />
-                  {item.id === artist.id ? 'SIM' : 'Não'}
+                  <div className="w-full flex justify-between gap-2">
+                    <User
+                      avatarProps={{
+                        size: 'md',
+                        src: 'https://i.pravatar.cc/150?u=a04258114e29026702d',
+                      }}
+                      description={'Credits: ' + item.credits}
+                      name={item.username}
+                    />
+                    <div className="flex flex-col items-end gap-1">
+                      {artist.id === item.id && (
+                        <Chip color="success" size="sm" variant="flat">
+                          Ativo
+                        </Chip>
+                      )}
+                    </div>
+                  </div>
                 </DropdownItem>
               ))}
           </DropdownSection>
 
           <DropdownSection aria-label="Profile Actions" showDivider>
             <DropdownItem key="artist_profile" textValue="Seja um artista!">
-              <Link to={'/artist'}>Criar perfil de artista</Link>
-            </DropdownItem>
-            <DropdownItem key="credits" endContent={0} textValue="Créditos">
-              Créditos:
+              <Link to={'/artist/register'}>Criar perfil de artista</Link>
             </DropdownItem>
           </DropdownSection>
           <DropdownSection aria-label="Profile Actions">
             <DropdownItem key="profile" textValue="Perfil">
-              Perfil
+              <Link to={'/profile'}>Perfil</Link>
             </DropdownItem>
             <DropdownItem key="settings" textValue="Configurações">
               Configurações

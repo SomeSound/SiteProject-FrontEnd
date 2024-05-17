@@ -1,9 +1,8 @@
-import { CardBody } from '@nextui-org/react';
+import { Card, CardBody } from '@nextui-org/react';
 import { Label } from '../Label/Label';
 import { Avatar } from '../Avatar';
 import { ArtistDTO, ArtistPageDTO } from '../../services/artist/types';
 import './styles.scss';
-import { Card } from '.';
 
 interface cardArtistProps {
   data: ArtistPageDTO;
@@ -14,14 +13,14 @@ export const CardArtist = ({ data }: cardArtistProps) => {
     <div className="card_artist">
       {data !== null
         ? data.artists.map((item: ArtistDTO) => (
-            <Card.Root>
+            <Card radius="none">
               <CardBody className="flex aspect-square items-center justify-center">
                 <Avatar.Root>
-                  <Avatar.User key={'la'} />
+                  <Avatar.User key={item.id} />
                 </Avatar.Root>
                 <Label>{item.username}</Label>
               </CardBody>
-            </Card.Root>
+            </Card>
           ))
         : 'Erro ao retornar artistas'}
     </div>

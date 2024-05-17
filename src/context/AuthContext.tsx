@@ -7,6 +7,7 @@ import {
 import { CustomerDTO, LoginDTO } from '../services/customer/types';
 import { parseCookies, setCookie } from 'nookies';
 import { ArtistDTO } from '../services/artist/types';
+import { Navigate } from 'react-router-dom';
 
 interface AuthContextProps {
   userSigned: boolean;

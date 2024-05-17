@@ -27,7 +27,11 @@ export const Login = ({ onOpenChange }: LoginProps) => {
     <>
       <form onSubmit={handleSubmit(handleLogin)}>
         <Input {...register('email')} type="text" placeholder="Email" />
-        <Input {...register('password')} type="text" placeholder="Password" />
+        <Input
+          {...register('password')}
+          type="password"
+          placeholder="Password"
+        />
 
         <Button color="default" type="submit" variant="shadow">
           Entrar

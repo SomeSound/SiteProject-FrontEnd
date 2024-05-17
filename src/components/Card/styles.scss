@@ -1,13 +1,7 @@
-.card_root {
-    width: 100%;
-}
-
 .card_track {
     position: sticky;
-    width: 100%;
 }
 
-.card_artist {
-    position: sticky;
-    width: auto;
+.card_track_body {
+    height: fit-content;
 }
