@@ -11,7 +11,7 @@ import { parseCookies } from 'nookies';
 const { token } = parseCookies();
 
 const api = axios.create({
-  baseURL: 'http://44.213.164.140:8080', //TODO ENVs
+  baseURL: 'https://44.213.164.140:8080', //TODO ENVs
   withCredentials: true,
   headers: {
     Accept: 'application/json',
@@ -19,7 +19,7 @@ const api = axios.create({
   },
 });
 
-if (token !== 'null') {
+if (token !== 'null' && token) {
   api.defaults.headers['Authorization'] = `Bearer ${token.toString()}`;
 }
 
