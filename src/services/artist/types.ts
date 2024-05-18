@@ -1,3 +1,5 @@
+import { TrackPageDTO } from '../track/types';
+
 export type ArtistPageDTO = {
   last: boolean;
   first: boolean;

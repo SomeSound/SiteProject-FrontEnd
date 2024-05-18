@@ -1,12 +1,11 @@
-import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../context/AuthContext';
+import { useEffect, useState } from 'react';
 import { Card, CardHeader, Image } from '@nextui-org/react';
 import { Label } from '../../components/Label/Label';
 import { CardTrack } from '../../components/Card/CardTrack';
-import { getTracks } from '../../services/track';
+import { getTracksByArtistUsername } from '../../services/track';
 import { TrackPageDTO } from '../../services/track/types';
-import './styles.scss';
 import { useParams } from 'react-router-dom';
+import './styles.scss';
 
 export const Artist = () => {
   const [tracks, setTracks] = useState<TrackPageDTO>(null);
@@ -14,7 +13,7 @@ export const Artist = () => {
 
   async function handleGetTracks() {
     try {
-      const response = await getTracks();
+      const response = await getTracksByArtistUsername(artist);
       setTracks(response.data);
     } catch (error) {
       console.log('Error get tracks', error);
@@ -24,6 +23,7 @@ export const Artist = () => {
   useEffect(() => {
     handleGetTracks();
   }, []);
+
   return (
     <div className="profile_page">
       <Card className="profile_banner" radius="none">

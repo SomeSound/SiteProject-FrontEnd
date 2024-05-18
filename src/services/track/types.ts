@@ -17,7 +17,7 @@ export type TrackDTO = {
   duration: string;
   image: string;
   genre: string;
-  artist: ArtistDTO;
+  artist?: ArtistDTO;
   path: string;
   file?: File;
 };
