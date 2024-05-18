@@ -1,8 +1,7 @@
-import { Button, Card, Image } from '@nextui-org/react';
+import { Button, Card, Image, Link } from '@nextui-org/react';
 import { CardBody } from '@nextui-org/react';
 import { useStore } from '../../store/useStore';
 import { getFileTrackById } from '../../services/track';
-import { Link } from 'react-router-dom';
 import { TrackDTO, TrackPageDTO } from '../../services/track/types';
 
 import './styles.scss';
@@ -49,32 +48,42 @@ export const CardTrack = ({ data, height, width }: cardTrackProps) => {
                     className="object-cover"
                     height={height}
                     width={width}
-                    src={item.image}
+                    src={'https://i.pravatar.cc/150?u=a04258114e29026702d'}
                   />
                   <Button
+                    size="sm"
                     isIconOnly
                     className="data-[hover]:bg-foreground/10"
                     radius="full"
                     variant="light"
                     onClick={() => addToPlaylist(item)}
                   >
-                    <PlusIcon />
+                    <PlusIcon size={20} />
                   </Button>
                   <Button
+                    size="sm"
                     isIconOnly
                     className="data-[hover]:bg-foreground/10"
                     radius="full"
                     variant="light"
                     onClick={() => playTrackById(item)}
                   >
-                    <NextIcon />
+                    <NextIcon size={20} />
                   </Button>
                   <div className="card_info">
                     <div>
-                      <Link to={'/'}>{item.name}</Link>
+                      <Link color="foreground" href={'/'}>
+                        {item.name}
+                      </Link>
                     </div>
                     <div>
-                      <Link to={'/'}>{item.artist.username}</Link>
+                      <Link
+                        size="sm"
+                        color="danger"
+                        href={`/artist/${item.artist.username}`}
+                      >
+                        {item.artist.username}
+                      </Link>
                     </div>
                   </div>
                 </div>

@@ -5,7 +5,7 @@ import { Landing } from '../pages/Landing/Landing';
 import { RegisterCustomer } from '../pages/Register/RegisterCustomer';
 import { RegisterArtist } from '../pages/Register/RegisterArtist';
 import { UploadTrack } from '../pages/UploadTrack/UploadTrack';
-import { Profile } from '../pages/Profile/Profile';
+import { Artist } from '../pages/Artist/Artist';
 
 export const Routes = createBrowserRouter([
   {
@@ -21,8 +21,8 @@ export const Routes = createBrowserRouter([
         element: <RegisterCustomer />,
       },
       {
-        path: '/profile',
-        element: <Profile />,
+        path: '/artist/:username',
+        element: <Artist />,
       },
       {
         path: '/artist/register',

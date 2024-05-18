@@ -1,13 +1,12 @@
-import React from 'react';
-export const PlusIcon = (props: any) => (
+export const PlusIcon = ({ size = 24, width = 24, height = 24, ...props }) => (
   <svg
     aria-hidden="true"
     fill="none"
     focusable="false"
-    height="1em"
+    height={size || height}
     role="presentation"
     viewBox="0 0 24 24"
-    width="1em"
+    width={size || width}
     {...props}
   >
     <g
@@ -15,7 +14,7 @@ export const PlusIcon = (props: any) => (
       stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth={1.5}
+      strokeWidth={2.0}
     >
       <path d="M6 12h12" />
       <path d="M12 18V6" />

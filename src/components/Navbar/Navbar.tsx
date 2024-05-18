@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { Modal } from '../Modal';
-import { Button, Input, useDisclosure } from '@nextui-org/react';
-import { Link } from 'react-router-dom';
+import { Button, Input, Link, useDisclosure } from '@nextui-org/react';
 import { Login } from '../Login/Login';
 import { AuthContext } from '../../context/AuthContext';
 import { Avatar } from '../Avatar';
@@ -21,7 +20,8 @@ export const Navbar = () => {
             <div>
               <Link
                 className="register_link"
-                to={'/customer'}
+                color="foreground"
+                href={'/customer'}
                 onClick={onClose}
               >
                 Clique aqui para cadastrar
@@ -35,17 +35,25 @@ export const Navbar = () => {
 
       <div className="div_navbar_root">
         <div className="div_nav_logo">
-          <Link to={'/'}>Logo</Link>
+          <Link color="foreground" href={'/'}>
+            Logo
+          </Link>
         </div>
         <div className="div_navbar_items flex">
           <div className="div_nav_item">
-            <Link to={'/'}>Gêneros</Link>
+            <Link color="foreground" href={'/'}>
+              Gêneros
+            </Link>
           </div>
           <div className="div_nav_item">
-            <Link to={'/'}>Músicas</Link>
+            <Link color="foreground" href={'/'}>
+              Músicas
+            </Link>
           </div>
           <div className="div_nav_item">
-            <Link to={'/'}>Artistas</Link>
+            <Link color="foreground" href={'/'}>
+              Artistas
+            </Link>
           </div>
         </div>
         <div className="div_nav_search">
@@ -70,7 +78,9 @@ export const Navbar = () => {
               {artists !== null && (
                 <div className="upload_button">
                   <Button color="default" type="button" variant="ghost">
-                    <Link to={'/upload'}>Upload</Link>
+                    <Link color="foreground" href={'/upload'}>
+                      Upload
+                    </Link>
                   </Button>
                 </div>
               )}

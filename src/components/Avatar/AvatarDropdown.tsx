@@ -8,12 +8,12 @@ import {
   Avatar,
   DropdownSection,
   User,
+  Link,
   Button,
   Chip,
 } from '@nextui-org/react';
 import { HtmlHTMLAttributes, useContext, useEffect } from 'react';
 import { parseCookies } from 'nookies';
-import { Link } from 'react-router-dom';
 
 interface AvatarDropdownProps extends HtmlHTMLAttributes<HTMLButtonElement> {
   image: string;
@@ -81,12 +81,16 @@ export function AvatarDropdown({ image }: AvatarDropdownProps) {
 
           <DropdownSection aria-label="Profile Actions" showDivider>
             <DropdownItem key="artist_profile" textValue="Seja um artista!">
-              <Link to={'/artist/register'}>Criar perfil de artista</Link>
+              <Link color="foreground" href={'/artist/register'}>
+                Criar perfil de artista
+              </Link>
             </DropdownItem>
           </DropdownSection>
           <DropdownSection aria-label="Profile Actions">
             <DropdownItem key="profile" textValue="Perfil">
-              <Link to={'/profile'}>Perfil</Link>
+              <Link color="foreground" href={'/profile'}>
+                Perfil
+              </Link>
             </DropdownItem>
             <DropdownItem key="settings" textValue="Configurações">
               Configurações

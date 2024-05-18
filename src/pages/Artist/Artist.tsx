@@ -6,10 +6,11 @@ import { CardTrack } from '../../components/Card/CardTrack';
 import { getTracks } from '../../services/track';
 import { TrackPageDTO } from '../../services/track/types';
 import './styles.scss';
+import { useParams } from 'react-router-dom';
 
-export const Profile = () => {
-  const { artist } = useContext(AuthContext);
+export const Artist = () => {
   const [tracks, setTracks] = useState<TrackPageDTO>(null);
+  const { artist } = useParams();
 
   async function handleGetTracks() {
     try {
@@ -21,7 +22,6 @@ export const Profile = () => {
   }
 
   useEffect(() => {
-    // getArtistProfile(artist.id);
     handleGetTracks();
   }, []);
   return (
