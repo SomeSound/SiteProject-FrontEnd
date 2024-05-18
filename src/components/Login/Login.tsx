@@ -5,7 +5,6 @@ import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
 
 import './styles.scss';
-import { useNavigate } from 'react-router-dom';
 
 interface LoginProps {
   onOpenChange: (isOpen: boolean) => void;
@@ -14,13 +13,11 @@ interface LoginProps {
 export const Login = ({ onOpenChange }: LoginProps) => {
   const { signIn } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
-  const navigate = useNavigate();
 
   async function handleLogin(data: LoginDTO) {
     try {
       await signIn(data);
       onOpenChange(false);
-      navigate('/');
     } catch (error) {
       console.log('Error to logIn', error);
     }
@@ -30,7 +27,11 @@ export const Login = ({ onOpenChange }: LoginProps) => {
     <>
       <form onSubmit={handleSubmit(handleLogin)}>
         <Input {...register('email')} type="text" placeholder="Email" />
-        <Input {...register('password')} type="text" placeholder="Password" />
+        <Input
+          {...register('password')}
+          type="password"
+          placeholder="Password"
+        />
 
         <Button color="default" type="submit" variant="shadow">
           Entrar

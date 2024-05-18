@@ -1,78 +1,31 @@
 import { useContext } from 'react';
 import { Modal } from '../Modal';
-import { Button, Input, Link, User, useDisclosure } from '@nextui-org/react';
-import { TrackDTO } from '../../services/track/types';
-import { saveTracks } from '../../services/track';
-import { NavLink } from 'react-router-dom';
+import { Button, Input, Link, useDisclosure } from '@nextui-org/react';
 import { Login } from '../Login/Login';
 import { AuthContext } from '../../context/AuthContext';
+import { Avatar } from '../Avatar';
 
 import './styles.scss';
-import { Avatar } from '../Avatar';
 
 export const Navbar = () => {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
-  const { signed } = useContext(AuthContext);
-
-  async function handleSaveTrack(data: TrackDTO) {
-    try {
-      await saveTracks('1', data);
-    } catch (error) {
-      console.log('Error save Tracks', error);
-    }
-  }
+  const { userSigned: signed, artists } = useContext(AuthContext);
 
   return (
     <>
-      {/* <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
-        <Modal.Header text="Upload Track" />
-
-        <form onSubmit={handleSubmit(handleSaveTrack)}>
-          <Modal.Body rememberPass forgotPass>
-            <div>
-              <Input {...register('name')} type="text" placeholder="Name" />
-              <Input
-                {...register('duration')}
-                type="text"
-                placeholder="Duration"
-              />
-              <Input {...register('genre')} type="text" placeholder="Genre" />
-              <Input {...register('image')} type="text" placeholder="Image" />
-            </div>
-
-            <Upload.Root>
-              <div>
-                <input type="file" {...register('file')} />
-              </div>
-              <div>
-                <Upload.List />
-              </div>
-            </Upload.Root>
-          </Modal.Body>
-          <Modal.Footer>
-            <Modal.Button
-              color="success"
-              variant="flat"
-              text="Enviar"
-              type="submit"
-              onClick={() => onClose}
-            />
-          </Modal.Footer>
-        </form>
-      </Modal.Root> */}
-
       <div className="modal_root">
         <Modal.Root isOpen={isOpen} onOpenChange={onOpenChange}>
           <Modal.Header text="Login" />
           <Modal.Body>
             <div>
-              <NavLink
+              <Link
                 className="register_link"
-                to={'/customer'}
+                color="foreground"
+                href={'/customer'}
                 onClick={onClose}
               >
                 Clique aqui para cadastrar
-              </NavLink>
+              </Link>
             </div>
             <Login onOpenChange={onOpenChange} />
           </Modal.Body>
@@ -82,17 +35,25 @@ export const Navbar = () => {
 
       <div className="div_navbar_root">
         <div className="div_nav_logo">
-          <NavLink to={'/'}>Logo</NavLink>
+          <Link color="foreground" href={'/'}>
+            Logo
+          </Link>
         </div>
         <div className="div_navbar_items flex">
           <div className="div_nav_item">
-            <NavLink to={'/'}>Gêneros</NavLink>
+            <Link color="foreground" href={'/'}>
+              Gêneros
+            </Link>
           </div>
           <div className="div_nav_item">
-            <NavLink to={'/'}>Músicas</NavLink>
+            <Link color="foreground" href={'/'}>
+              Músicas
+            </Link>
           </div>
           <div className="div_nav_item">
-            <NavLink to={'/'}>Artistas</NavLink>
+            <Link color="foreground" href={'/'}>
+              Artistas
+            </Link>
           </div>
         </div>
         <div className="div_nav_search">
@@ -114,14 +75,18 @@ export const Navbar = () => {
         <div className="div_nav_avatar">
           {signed ? (
             <div className="flex">
-              <div className="upload_button">
-                <Button color="default" type="button" variant="ghost">
-                  <NavLink to={'/upload'}>Upload</NavLink>
-                </Button>
-              </div>
-              <div className="avatar_dropdown">
+              {artists !== null && (
+                <div className="upload_button">
+                  <Button color="default" type="button" variant="ghost">
+                    <Link color="foreground" href={'/upload'}>
+                      Upload
+                    </Link>
+                  </Button>
+                </div>
+              )}
+              <div className="avatar_dropdown_nav">
                 <Avatar.Root>
-                  <Avatar.Dropdown />
+                  <Avatar.Dropdown image="" />
                 </Avatar.Root>
               </div>
             </div>

@@ -1,24 +1,28 @@
-import { Card, CardContent } from '../shadcn/card';
-import './styles.scss';
+import { Card, CardBody } from '@nextui-org/react';
 import { Label } from '../Label/Label';
 import { Avatar } from '../Avatar';
+import { ArtistDTO, ArtistPageDTO } from '../../services/artist/types';
+import './styles.scss';
 
 interface cardArtistProps {
-  image: string;
-  name: string;
+  data: ArtistPageDTO;
 }
 
-export const CardArtist = ({ image, name }: cardArtistProps) => {
+export const CardArtist = ({ data }: cardArtistProps) => {
   return (
     <div className="card_artist">
-      <Card className="border-none">
-        <CardContent className="flex aspect-square items-center justify-center">
-          <Avatar.Root>
-            <Avatar.User key={'la'} />
-          </Avatar.Root>
-          <Label>{name}</Label>
-        </CardContent>
-      </Card>
+      {data !== null
+        ? data.artists.map((item: ArtistDTO) => (
+            <Card radius="none">
+              <CardBody className="flex aspect-square items-center justify-center">
+                <Avatar.Root>
+                  <Avatar.User key={item.id} />
+                </Avatar.Root>
+                <Label>{item.username}</Label>
+              </CardBody>
+            </Card>
+          ))
+        : 'Erro ao retornar artistas'}
     </div>
   );
 };

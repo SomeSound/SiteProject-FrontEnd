@@ -1,5 +1,8 @@
 import { AxiosPromise } from 'axios';
 import api from '../axiosConfig';
+import { parseCookies } from 'nookies';
+
+const { token } = parseCookies();
 
 export function useService() {
   function get(url: string, data: any, query: string): AxiosPromise {
@@ -9,8 +12,12 @@ export function useService() {
   }
 
   function post(url: string, data: any): AxiosPromise {
+    const header = url.includes('/track?artistId')
+      ? 'multipart/form-data'
+      : 'application/json';
+    console.log(header);
     return api.post(`${url}`, data, {
-      headers: {},
+      headers: { 'Content-Type': header },
     });
   }
 

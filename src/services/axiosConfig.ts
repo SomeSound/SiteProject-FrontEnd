@@ -19,8 +19,8 @@ const api = axios.create({
   },
 });
 
-if (token) {
-  api.defaults.headers['Authorization'] = `Bearer ${token}`;
+if (token !== 'null') {
+  api.defaults.headers['Authorization'] = `Bearer ${token.toString()}`;
 }
 
 api.interceptors.response.use(
